@@ -1,0 +1,29 @@
+(1)DONE - Make a list of astr/space
+(2)DONE - Search astro news and get headlines
+	Input: URL from txt file
+	Output: headlines to txt file
+
+(3)- Find most popular topics
+	Input: headlines from txt file
+	Split headlines into words
+	Get Dictionary: Word (nouns only): count
+	Filter generic keywords/ website/ org names
+	Output: top 5 keywords as trending
+
+(4)- Refeed the topics to find exact objects
+	Input: Top 5 keywords
+	Search keywords from websites.
+	Get exact objects
+	(*): Search objects in NASA databases for info, presave this info
+	Output: Dictionary: Object, coordinates
+
+(5)- Website interface:
+	Alex slays this
+	Need: buttons to view objects.
+	User click to view object.
+
+Note: (*): Easier to do this. 
+	Pro: Faster loading time. If we looked up object at the time user click them might take longer to load.
+	Con: Consuming space, bad for scaling since we have to presave all options. 
+
+	
