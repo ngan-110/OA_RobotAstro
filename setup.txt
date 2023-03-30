@@ -3,12 +3,12 @@
 	Input: URL from txt file
 	Output: headlines to txt file
 
-(3)- Find most popular topics
-	DONE (a) Input: headlines from txt file
-	DONE (b) Split headlines into words
-	DONE (c) Get Dictionary: Word (nouns only): count
-	DONE (d) Filter generic keywords/ website/ org names
-	DONE (e) Output: top 5 keywords as trending (I put 10 for options as we adjust the filter list)
+(3)- DONEFind most popular topics
+	Input: headlines from txt file
+	Split headlines into words
+	Get Dictionary: Word (nouns only): count
+	Filter generic keywords/ website/ org names
+	Output: top 5 keywords as trending (I put 10 for options as we adjust the filter list)
 
 (4)- Refeed the topics to find exact objects
 	Input: Top 5 keywords
