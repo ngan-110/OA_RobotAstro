@@ -3,7 +3,7 @@
 	Input: URL from txt file
 	Output: headlines to txt file
 
-(3)- DONEFind most popular topics
+(3)DONE - Find most popular topics
 	Input: headlines from txt file
 	Split headlines into words
 	Get Dictionary: Word (nouns only): count
