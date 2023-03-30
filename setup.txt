@@ -13,8 +13,9 @@
 (4)- Refeed the topics to find exact objects
 	Input: Top 5 keywords
 	Search keywords from websites.
-	Get exact objects
+	Get exact objects (how do we do this?)
 	(*): Search objects in NASA databases for info, presave this info
+		- can be done with the Pystellarium package, just need to check with catalog they use
 	Output: Dictionary: Object, coordinates
 
 (5)- Website interface:
