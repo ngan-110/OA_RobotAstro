@@ -7,8 +7,8 @@
 	DONE (a) Input: headlines from txt file
 	DONE (b) Split headlines into words
 	DONE (c) Get Dictionary: Word (nouns only): count
-	(d) Filter generic keywords/ website/ org names
-	(e) Output: top 5 keywords as trending
+	DONE (d) Filter generic keywords/ website/ org names
+	DONE (e) Output: top 5 keywords as trending (I put 10 for options as we adjust the filter list)
 
 (4)- Refeed the topics to find exact objects
 	Input: Top 5 keywords
