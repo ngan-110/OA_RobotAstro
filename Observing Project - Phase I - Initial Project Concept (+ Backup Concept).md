@@ -6,10 +6,10 @@
 
 Robot astronomer — Build your own AI astronomer that controls a telescope AND decides what to observe.
 
-#### Data Collection
+#### Data Collections and Methods
 
 - Stage 1: Collect data from space news sites: website\_scraping.ipynb:
-    - Use BeautifulSoup
+    - Use BeautifulSoup for website scraping
     - Websites: https://www.space.com/science-astronomy', 
         'https://www.sciencenews.org/topic/astronomy', 
         'https://www.nature.com/natastron/news-and-comment', 
@@ -17,6 +17,18 @@ Robot astronomer — Build your own AI astronomer that controls a telescope AND 
     - Scrape headlines to headlines.txt
 
 - Stage 2: Process keywords keyword\_processing.ipynb
+    - Use nltk for language and POS tagging
+    - Find most popular topics popular\_topics():
+        - Read headlines.txt
+        - Get nouns with nltk
+        - Write nouns in a dictionary and track count in headlines.
+        - Exclude generic words: 'A', 'world', 'scientist', 'scientists', 'sky', 'space', 'science', 'bookshelf', '’', 'nature', 'ideas', 'doesn', 't', 'bodies'
+        - Get top 10 words with highest counts.
+        - Write these words in popular\_topics.txt and their occurences.
+- Stage 3: Search top topics in databases to find more informations about the objects and the coordinates
+
+- Stage 4: Create an interface for user.
+    - Display image of objects and links to papers
     - 
 
 #### Project Goals:
@@ -25,7 +37,5 @@ Robot astronomer — Build your own AI astronomer that controls a telescope AND 
     
 #### Background
 
-
-#### Pipelines/ Methods
   
   
