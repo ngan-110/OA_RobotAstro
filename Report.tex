@@ -1,0 +1,170 @@
+% template.tex
+% COMS 4733 course staff, Columbia University
+% (c) 2020
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{bbm}
+\usepackage{framed}
+\usepackage{mdframed}
+\usepackage{listings}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[letterpaper,voffset=-.5in,bmargin=3cm,footskip=1cm]{geometry}
+\usepackage[colorlinks = true]{hyperref} 
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.1in}
+\allowdisplaybreaks
+\headheight 15pt
+\headsep 10pt
+\newcommand\N{\mathbb N}
+\newcommand\Z{\mathbb Z}
+\newcommand\R{\mathbb R}
+\newcommand\Q{\mathbb Q}
+\newcommand\lcm{\operatorname{lcm}}
+\newcommand\setbuilder[2]{\ensuremath{\left\{#1\;\middle|\;#2\right\}}}
+\newcommand\E{\operatorname{E}}
+\newcommand\V{\operatorname{V}}
+\newcommand\Pow{\ensuremath{\operatorname{\mathcal{P}}}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand\hint[1]{\textbf{Hint}: #1}
+\newcommand\note[1]{\textbf{Note}: #1}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}},
+}
+
+\fancypagestyle{firstpagestyle} {
+  \renewcommand{\headrulewidth}{0pt}
+  \lhead{\textbf{ASTRUN 3646}}
+  \rhead{\textbf{Rhessa Weber Langstaff, Ngan Bao, Alex Savino}}
+  
+}
+
+\pagestyle{fancyplain}
+\usepackage{tikz}
+
+\begin{document}
+  \thispagestyle{firstpagestyle}
+  \begin{center}
+    {\huge \textbf{Project Phase I}}
+  \end{center}
+
+    
+\subsection*{Main project topic}
+Robot astronomer — Build your own AI astronomer that gets 
+coordinates of object AND decides what to observe.
+
+
+\subsection*{Data Collections and Methods}
+\begin{enumerate}[leftmargin=*]
+    \item Stage 1: Collect data from space news sites:  \texttt{website\_scraping.ipynb}:
+        \begin{enumerate}
+            \item [$-$] Use BeautifulSoup for website scraping
+            \item [$-$] Websites: https://www.space.com/science-astronomy, \\
+            https://www.sciencenews.org/topic/astronomy, \\ 
+            https://www.nature.com/natastron/news-and-comment, \\ 
+            https://phys.org/space-news/
+            \item [$-$] Get headlines and write to \texttt{headlines.txt}
+        \end{enumerate}
+    \item Stage 2: Process keywords \texttt{keyword\_processing.ipynb}
+        \begin{enumerate}
+            \item [$-$] Use nltk for language and POS tagging
+            \item [$-$] Find most popular topics \texttt{popular\_topics()}:
+            \begin{enumerate}[leftmargin=*]
+                \item[$\cdot$] Read \texttt{headlines.txt}
+                \item[$\cdot$]Get nouns with nltk
+                \item[$\cdot$]Write nouns in a dictionary and track count in headlines.
+                \item[$\cdot$]Exclude generic words, websites, org names
+                \item[$\cdot$]Get top 10 words with highest counts
+                \item[$\cdot$]Write these words in \texttt{popular\_topics.txt} and their occurrences
+            \end{enumerate}
+        \end{enumerate}
+    \item Stage 3: Search top topics in databases to find more information 
+    about the objects and the coordinates: \texttt{object\_retrieve.ipynb}:
+    \begin{enumerate}
+        \item [$-$] Reverse search using keywords on websites
+        \item [$-$] Get exact objects
+        \item [$-$] Get objects' coordinates from databases, can feed object name to $https://archive.stsci.edu/cgi-bin/dss\_form$, use Astropy
+        \item [$-$] Determine if objects are observable, flag and move to next object if not observable
+        \item [$-$] Use coordinates RA and Dec to get image from $https://archive.stsci.edu/cgi-bin/dss\_form$
+        \item [$-$] Save brief information about objects, coordinates, images and related news/articles
+    \end{enumerate}
+    \item Stage 4: Create an interface for user:
+    \begin{enumerate}
+        \item [$-$] Display image of objects and links to papers/articles
+    \end{enumerate}
+\end{enumerate}
+
+\subsection*{Project Goals}
+The goal of this project is to automate the process of retrieving popular stellar objects 
+from space news websites, analyzing them, and quickly determining the most popular ones to observe. 
+The project aims to achieve this goal by utilizing advanced techniques in AI and automation.\\
+
+The first objective of the project is to develop a web scraping tool that can 
+crawl popular space news websites and retrieve articles related to stellar objects. 
+The tool will then use natural language processing techniques to identify and extract 
+the names of the stellar objects mentioned in the articles.\\
+
+The second objective is to analyze the data collected by the web scraping tool 
+to determine the most popular stellar objects among the articles retrieved. This 
+will be achieved by using natural language processing to tag keywords mentioned 
+in headlines to process the data and identify most mentioned objects in the articles.\\
+
+The third objective is to search for the popular stellar objects identified in 
+the second objective within the Space Telescope Science Institute (STScI) database 
+using regular expression names. The tool will retrieve the  International 
+Celestial Reference System (ICRS) coordinates of the objects, their images, 
+and related articles/research papers from the STScI database.\\
+
+The final objective is to present the data retrieved in a user-friendly interface 
+that allows astronomers to quickly identify the most popular and promising stellar 
+objects to observe. The interface will provide users with a dashboard that displays 
+the ICRS coordinates, images, and related articles/research papers of the popular stellar objects.\\
+
+Overall, the project aims to streamline the process of identifying and observing 
+popular stellar objects by automating the data retrieval and analysis process. 
+By achieving these objectives, the project will enable astronomers to make more 
+efficient use of their time and resources, and increase the likelihood of making 
+groundbreaking discoveries in the field of astronomy.\\
+
+\subsection*{Background}
+The field of astronomy has been revolutionized by advances in Artificial Intelligence 
+(AI) and automation. These technologies have greatly improved our ability to collect 
+and analyze vast amounts of astronomical data, and have enabled us to make significant 
+discoveries about the universe.\\
+
+One of the primary applications of AI and automation in astronomy is in the collection 
+of data. With the development of advanced telescopes and sensors, astronomers can now 
+capture vast amounts of data about the universe. However, processing and analyzing 
+this data manually can be a time-consuming and labor-intensive process. AI and automation 
+have therefore been used to streamline the data collection process, allowing astronomers 
+to gather more data in less time. In addition to collecting data, AI and automation have 
+also been used to identify and select objects of interest for further observation. 
+This is particularly important in astronomy, where there are billions of stars and 
+other celestial objects to observe. By using AI algorithms to analyze the data collected 
+by telescopes and sensors, astronomers can quickly identify objects that are most likely 
+to yield valuable scientific insights.\\
+
+Auto-selecting stellar objects to observe has become an important aspect of modern 
+astronomy. AI and automation have made this process more efficient by enabling astronomers 
+to quickly identify objects that they are interested in, allowing them to focus their 
+attention and resources on the most promising objects.\\
+
+\end{document}
+
