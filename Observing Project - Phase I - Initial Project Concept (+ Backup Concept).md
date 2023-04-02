@@ -24,16 +24,17 @@ Robot astronomer — Build your own AI astronomer that controls a telescope AND 
         - Write nouns in a dictionary and track count in headlines.
         - Exclude generic words: 'A', 'world', 'scientist', 'scientists', 'sky', 'space', 'science', 'bookshelf', '’', 'nature', 'ideas', 'doesn', 't', 'bodies'
         - Get top 10 words with highest counts.
-        - Write these words in popular\_topics.txt and their occurences.
-- Stage 3: Search top topics in databases to find more informations about the objects and the coordinates
+        - Write these words in popular\_topics.txt and their occurrences
+- Stage 3: Search top topics in databases to find more information about the objects and the coordinates.
+    - Reverse search using keywords on websites 
+    - Get exact object
+    - Get objects' coordinates from databases
+    - Save brief information about objects, coordinates and photos
 
 - Stage 4: Create an interface for user.
-    - Display image of objects and links to papers
-    - 
+    - Display image of objects and links to papers/ articles
 
 #### Project Goals:
-
-
     
 #### Background
 
