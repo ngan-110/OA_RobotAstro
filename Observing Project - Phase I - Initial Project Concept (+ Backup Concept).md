@@ -20,14 +20,14 @@ Robot astronomer — Build your own AI astronomer that gets coordinates of objec
         - Read headlines.txt
         - Get nouns with nltk
         - Write nouns in a dictionary and track count in headlines.
-        - Exclude generic words: 'A', 'world', 'scientist', 'scientists', 'sky', 'space', 'science', 'bookshelf', '’', 'nature', 'ideas', 'doesn', 't', 'bodies'
+        - Exclude generic words, websites, org names
         - Get top 10 words with highest counts.
         - Write these words in popular\_topics.txt and their occurrences
 
 - Stage 3: Search top topics in databases to find more information about the objects and the coordinates.
     - Reverse search using keywords on websites 
     - Get exact objects
-    - Get objects' coordinates from databases, can feed object name to https://archive.stsci.edu/cgi-bin/dss_form or use Astropy
+    - Get objects' coordinates from databases, can feed object name to https://archive.stsci.edu/cgi-bin/dss_form, use Astropy, Pystellarium
     - Determine if objects are observable, flag and move to next object if not observable
     - Use coordinates RA and Dec to get image from https://archive.stsci.edu/cgi-bin/dss_form
     - Save brief information about objects, coordinates and photos.
