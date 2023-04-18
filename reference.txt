@@ -1,0 +1,34 @@
+</script><div class="slice-container newsletter-slice newsletterForm-exitIntent slice-container-newsletterForm" id="slice-container-newsletterForm-exitIntent"></div>
+<div class="slice-container affiliate-disclaimer-bar-slice affiliateDisclaimerBar slice-container-affiliateDisclaimer" id="slice-container-affiliateDisclaimerBar"><aside aria-label="Disclaimer" data-reactroot="" id="affiliate-disclaimer"><p class="affiliate-disclaimer__copy" data-test="affiliate-disclaimer__copy">When you purchase through links on our site, we may earn an affiliate commission. <a href="https://www.space.com/41418-about-us.html#section-affiliate-advertising-disclosure">Here’s how it works</a>.</p></aside></div>
+<div class="ad-unit" id="top-leaderboard"></div>
+<div id="content">
+<header class="vertical-header">
+<h1>Science &amp; Astronomy</h1>
+</header>
+<div class="static-lightbox2 ad-unit"></div>
+<section class="listingResultsWrapper mixed mixed" data-list="mixed/latest" data-next="latest" data-total-count="18610">
+<header>
+<h2 class="list-title"> Latest</h2>
+</header>
+<div class="listingResults mixed" data-listkey="mixed" data-sort="page">
+<div class="listingResult small result1" data-page="1">
+<a aria-label="Giant exoplanet found, imaged directly thanks to star-mapping data (photos)" class="article-link" href="https://www.space.com/giant-exoplanet-discovered-gaia-star-mapping-data">
+<article aria-label="Search result: Giant exoplanet found, imaged directly thanks to star-mapping data (photos)" class="search-result search-result-news has-rating">
+<div class="image">
+<figure class="article-lead-image-wrap" data-original="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg">
+<div class="image-remove-flow-width-setter">
+<div class="image-remove-reflow-container landscape" data-original="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg">
+<picture><source alt="The newfound exoplanet HIP 99770 b (circled), as imaged by Japan's Subaru Telescope. Data from Europe’s star-mapping Gaia spacecraft revealed the likely presence of a big exoplanet in this system." class="lazy-image-van" data-normal="https://vanilla.futurecdn.net/space/media/img/missing-image.svg" data-original-mos="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg" data-pin-media="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg" data-pin-nopin="true" data-sizes="99vw" data-srcset="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-320-80.jpeg.webp 320w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-450-80.jpeg.webp 450w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-650-80.jpeg.webp 650w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-970-80.jpeg.webp 970w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-1024-80.jpeg.webp 1024w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-1200-80.jpeg.webp 1200w" onerror="if(this.src &amp;&amp; this.src.indexOf('missing-image.svg') !== -1){return true;};this.parentNode.replaceChild(window.missingImage(),this)" type="image/webp"/><source alt="The newfound exoplanet HIP 99770 b (circled), as imaged by Japan's Subaru Telescope. Data from Europe’s star-mapping Gaia spacecraft revealed the likely presence of a big exoplanet in this system." class="lazy-image-van" data-normal="https://vanilla.futurecdn.net/space/media/img/missing-image.svg" data-original-mos="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg" data-pin-media="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg" data-pin-nopin="true" data-sizes="99vw" data-srcset="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-320-80.jpeg 320w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-450-80.jpeg 450w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-650-80.jpeg 650w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-970-80.jpeg 970w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-1024-80.jpeg 1024w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-1200-80.jpeg 1200w" onerror="if(this.src &amp;&amp; this.src.indexOf('missing-image.svg') !== -1){return true;};this.parentNode.replaceChild(window.missingImage(),this)" type="image/jpeg"/><img alt="The newfound exoplanet HIP 99770 b (circled), as imaged by Japan's Subaru Telescope. Data from Europe’s star-mapping Gaia spacecraft revealed the likely presence of a big exoplanet in this system." class="lazy-image-van" data-normal="https://vanilla.futurecdn.net/space/media/img/missing-image.svg" data-original-mos="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg" data-pin-media="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ.jpeg" data-pin-nopin="true" data-sizes="99vw" data-srcset="https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-320-80.jpeg 320w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-450-80.jpeg 450w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-650-80.jpeg 650w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-970-80.jpeg 970w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-1024-80.jpeg 1024w, https://cdn.mos.cms.futurecdn.net/WSzUE2o7H9dRrWTt3K3shJ-1200-80.jpeg 1200w" onerror="if(this.src &amp;&amp; this.src.indexOf('missing-image.svg') !== -1){return true;};this.parentNode.replaceChild(window.missingImage(),this)" src="https://vanilla.futurecdn.net/space/media/img/missing-image.svg"/></picture>
+</div>
+</div>
+</figure>
+</div>
+<div class="content">
+<header>
+<h3 class="article-name">Giant exoplanet found, imaged directly thanks to star-mapping data (photos)</h3>
+<p class="byline">
+<span class="by-author">
+By
+<span style="white-space:nowrap">
+Andrew Jones </span>
+</span>
