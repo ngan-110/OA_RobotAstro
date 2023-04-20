@@ -1,0 +1,9 @@
+This file describes the order of file usage:
+    1. Website Scrapping
+        Creates:
+            - headlines.txt
+            - links.txt
+    2. Keyword processing
+            - popular_topics.txt
+    3. Back search
+    4. Object Retrieve
