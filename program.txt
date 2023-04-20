@@ -6,4 +6,5 @@ This file describes the order of file usage:
     2. Keyword processing
             - popular_topics.txt
     3. Back search
+            - currently creates list of headlines and corresponding links
     4. Object Retrieve
