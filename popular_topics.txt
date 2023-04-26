@@ -1,10 +1,10 @@
 moon
+galaxy
 hole
-astronomers
-galaxies
-radio
-eclipse
-everything
-mission
+star
+mars
 planet
-time
+waves
+exoplanet
+video
+activity
