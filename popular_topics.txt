@@ -1,10 +1,10 @@
-moon
-galaxy
 hole
+galaxy
 star
+moon
 mars
 planet
-waves
+radio
+image
+stars
 exoplanet
-video
-activity
