@@ -121,7 +121,6 @@ def run_analysis(object,location):
         dest_path = '../IMAGES/' + image_file_name
         sys_dest_path = 'Astro-Website/IMAGES/' + image_file_name
 
-
         # Move the file to the destination directory
         shutil.move(src_path, sys_dest_path)
 
