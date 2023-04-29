@@ -1,3 +1,4 @@
+# THIS READS FROM HEADLINES.TXT TO SUB IN [[[OBJECT-1,2,3]]] IN EACH HTML FILE #
 import os
 
 link_txt = 'data/links.txt'

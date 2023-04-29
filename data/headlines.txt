@@ -1,38 +1,39 @@
-Pentagon has 'no credible evidence' of aliens or UFOs that defy physics	
-Space pictures! See our image of the day	
-Callisto: Everything you need to know about Jupiter's second-largest moon	
 What is the moon phase today? Lunar phases 2023	
-Students set to land first robotic US rover on the moon — before NASA	
-Merging galaxies shine with the light of a trillion suns in gorgeous James Webb Space Telescope photo	
-Milky Way galaxy: Everything you need to know about our cosmic neighborhood	
-China's moon plans involve 3D printing bricks from lunar soil	
-NASA joins Japan's mission to collect the 1st samples of Mars moon Phobos	
-Giant exoplanet found, imaged directly thanks to star-mapping data (photos)	
-New dark matter map created with 'cosmic fossil' shows Einstein was right (again)	
-Why do some James Webb Space Telescope images show warped and repeated galaxies?	
-Galaxy cluster X-ray discovery scores another win for the Big Bang theory	
-Neptune: A guide to the windy eighth planet from the sun	
-Rare red asteroids around Neptune could reveal the secrets of the early solar system	
-Strange radio signals detected from Earth-like planet could be a magnetic field necessary for life	
-The Artemis Generation: To the moon — this time to stay! (op-ed)	
-What's next for Europe's JUICE mission? Here's what to expect on its long journey to Jupiter	
-Earth Day: What is it and why does it matter?	
-Hybrid solar eclipse: Everything you need to know about the rare and strange phenomenon	
-Urchins are dying off across the Caribbean. Scientists now know why	
-The classic map of how the human brain manages movement gets an update	
-Octopus, squid and cuttlefish arms evolved to ‘taste’ different compounds	
-A prehistoric method for tailoring clothes may be written in bone	
-‘Period’ wants to change how you think about menstruation	
-Hibernating bears don’t get blood clots. Now scientists know why	
-Methane may not warm the Earth quite as much as previously thought	
-The Great Salt Lake is shrinking. What can we do to stop it?	
-The summer of 2021 was the Pacific Northwest’s hottest in a millennium	
+Pluto: Everything you need to know about the dwarf planet	
+Hubble telescope eyes galactic site of distant star explosion (video)	
+China's Zhurong Mars rover finds signs of recent water activity on Red Planet	
+Space pictures! See our image of the day	
+Seismic waves inside Mars' core hint at how it became hostile to life	
+James Webb Space Telescope spots huge galactic protocluster in the early universe (photo)	
+China's Mars rover may never wake up because of Martian dust	
+Hubble Telescope celebrates 33rd anniversary with gorgeous photo of nearby stellar nursery	
+Wow! Maxar satellite captures up-close look at NASA's Landsat 8 spacecraft in orbit	
+NASA's TESS exoplanet-hunting satellite celebrates 5 years in space	
+James Webb Space Telescope (JWST) — A complete guide	
+The strange mystery of asteroid Phaethon's comet-like tail may have just been solved	
+Astronomers discover record haul of 25 new repeating 'fast radio bursts'	
+Astronomers snap 1st-ever direct image of a black hole blasting out a powerful jet (photo, video)	
+Voyager engineers keep on tickin' in new documentary 'It's Quieter in the Twilight'	
+'Dragon cloud' holds clues about how the biggest stars in the galaxy are born	
+NASA needs sharper diversity focus to boost representation, audit finds	
+US updates asteroid-defense strategy	
+James Webb Space Telescope reveals rich chemistry of planet-forming disks for the 1st time	
+Here are 5 cool findings from a massive project on 240 mammal genomes	
+Here’s what we know about upcoming vaccines and antibodies against RSV	
+Pets and people bonded during the pandemic. But owners were still stressed and lonely	
+Fentanyl deaths have spiked among U.S. children and teens	
+Thawing permafrost may unleash industrial pollution across the Arctic	
+Ultrasound reveals trees’ drought-survival secrets	
+A massive cavern beneath a West Antarctic glacier is teeming with life	
+Seismic waves crossing Mars’ core reveal details of the Red Planet’s heart	
+Rocky planets might have been able to form in the early universe	
+Cosmic antimatter hints at origins of huge bubbles in our galaxy’s center	
+Black holes resolve paradoxes by destroying quantum states	
+These worms can escape tangled blobs in an instant. Here’s how	
+A sapphire Schrödinger’s cat shows that quantum effects can scale up	
 Saturn’s icy rings are probably heating its atmosphere, giving it an ultraviolet glow	
 The first black hole portrait got sharper thanks to machine learning	
 The Smithsonian’s ‘Lights Out’ inspires visitors to save the fading night sky	
-Videos of gold nanoparticles snapping together show how some crystals grow	
-The W boson might not be heavier than expected after all	
-Here’s why some Renaissance artists egged their oil paintings	
 A stream of cold gas is unexpectedly feeding the far-off Anthill Galaxy	
 The biggest planet orbiting TRAPPIST-1 doesn’t appear to have an atmosphere	
 A neutron star collision may have emitted a fast radio burst	
@@ -40,9 +41,9 @@ The mystery of Christiaan Huygens’ flawed telescopes may have been solved
 A runaway black hole has been spotted fleeing a distant galaxy	
 Newborn stars sculpt their galaxies in new James Webb telescope images	
 Astronomers spotted shock waves shaking the web of the universe for the first time	
-Half of all active satellites are now from SpaceX. Here’s why that may be a problem	
-The Milky Way may be spawning many more stars than astronomers had thought	
-What the first look at the genetics of Chernobyl’s dogs revealed	
+A sample return renaissance	
+A new versatile infrared facility at the VLT	
+A smashing success for planetary defence	
 Fast radio boom or bust?	
 Influence of author demographics on publication	
 Pinning down protoclusters	
@@ -58,26 +59,23 @@ Shine as the light
 Black hole takes multiple bites at the cherry	
 Supermassive black hole movies in action	
 A deeply resonant adolescent system	
-Welcome to the AI future?	
-Through the looking-glass	
-JWST set targets for population III	
-Rare solar eclipse to cross remote Australia, Indonesia	
-European Space Agency chief eyes tapping private industry partners	
-Indian astronomers investigate open cluster NGC 1027	
-Alignment of galaxies millions of light years away supports general relativity	
-Building telescopes on the moon could transform astronomy, and it's becoming an achievable goal	
-Help discover the sounds of space played by NASA's HARP	
-Clouds for your eclipse? NASA experiment will fly kite to rise above	
-NASA's TESS celebrates fifth year scanning the sky for new worlds	
-Could this copycat black hole be a new type of star?	
-Astronomers detect a massive brown dwarf orbiting the star TOI-5375	
-Metal-poor stars are more life-friendly, suggests study	
-Rocket science: Alaska sky spiral caused by SpaceX fuel dump	
-Team builds and tests calibrator for NASA's Nancy Grace Roman Space Telescope in record time	
-NASA shares first moon to Mars architecture concept review results	
-Old NASA satellite falling to Earth, risk of danger 'low'	
-Trailblazing Aeolus mission winding down	
-Want to see a total solar eclipse? Here's how to plan for it, and how to set your expectations in case of clouds	
-From platypus to parsecs and milliCrab: Why do astronomers use such weird units?	
-Looking for potential radio technosignatures from extragalactic sources	
-Solar sails could guide interplanetary travel, says new study (Update)	
+Key radar antenna stuck on Europe's Jupiter-bound spacecraft	
+Silence reveals insights in search for extraterrestrial life	
+Tianwen-1: Zhurong rover finds evidence of water at low latitudes on modern Mars	
+Astronomers detect the closest example yet of a black hole devouring a star	
+Second ring found around dwarf planet Quaoar	
+Combining observations to better visualize a superflare	
+Ground wide angle camera array detects prompt optical emission of gamma-ray burst	
+Gravitational waves from pulsars could be used to probe the interior of the sun	
+UAE astronaut exits ISS for first Arab space walk	
+What is the Fluidic Telescope?	
+Hubble captures galaxy cluster ACO S520	
+Earth from space: Blooming California	
+NICER detects quasi-periodic oscillations in X-ray binary 4U 1730–22	
+CryoSat reveals ice loss from glaciers	
+Two of the most massive touching stars ever found will eventually collide as black holes, finds study	
+NASA's Voyager will do more science with new power strategy	
+Study presents most detailed image of inner region of planet forming disks	
+Self-checking algorithm interprets gravitational-wave data	
+Jupiter Icy Moons Explorer's first taste of science from space	
+Out of gas in orbit? This US space company is here to help	
