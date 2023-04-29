@@ -1,14 +1,17 @@
 # THIS CODE ASSUMES THAT EACH HEADLINE IS ONE LINE!!!
 #    MIGHT HAVE TO CHANGE TO INCLUDE LINKS?
+import os
 
+link_txt = 'data\links.txt'
+headline_txt = 'data\headlines.txt'
 
-with open('/Users/alexandrasavino/Desktop/Astro-Website/TEST-ML-COMPONENTS/links.txt','r',encoding='utf-8') as link_file:
+with open(link_txt,'r',encoding='utf-8') as link_file:
     link_list = []
     for line in link_file:
         link_list.append(line)
-    #print(link_list)
 
-with open('/Users/alexandrasavino/Desktop/Astro-Website/TEST-ML-COMPONENTS/headlines.txt','r',encoding='utf-8') as headline_file:
+
+with open(headline_txt,'r',encoding='utf-8') as headline_file:
     headline_list = []
     for line in headline_file:
         line = ' '.join(word.capitalize() for word in line.split())
