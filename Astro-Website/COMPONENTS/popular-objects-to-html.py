@@ -82,7 +82,6 @@ longitude = float("{:.2f}".format(longitude))
 
 location = [latitude, longitude]
 
-
 object_list = ['M3','M87','M91']
 
 
