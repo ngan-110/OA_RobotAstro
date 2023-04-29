@@ -9,9 +9,9 @@ urlopen("https://ipinfo.io/json")
 data = json.load(urlopen("https://ipinfo.io/json"))
 
 latitude = float(data['loc'].split(',')[0])
-latitude =  "{:.2f}".format(latitude)
+latitude =  float("{:.2f}".format(latitude))
 longitude = float(data['loc'].split(',')[1])
-longitude = "{:.2f}".format(longitude)
+longitude = float("{:.2f}".format(longitude))
 
 location = [latitude, longitude]
 
@@ -19,7 +19,7 @@ location = [latitude, longitude]
 from object_retrieve import get_object_icrs 
 from object_retrieve import get_time
 
-time = get_time()
+time = get_time(location)
 
 #TEST OBJECT
 object = "M3"
@@ -31,6 +31,7 @@ if in_sky == True:
 else:
     statement = "THIS OBJECT IS BELOW YOUR HORIZON"
 
-title_string = "LAT: " + latitude + " LONG: " + longitude + " -- " + statement
+title_string = "LAT: " + str(latitude) + " LONG: " + str(longitude) + " -- " + statement
+print(title_string)
 
 

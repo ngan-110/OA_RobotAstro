@@ -86,7 +86,7 @@ def run_analysis(object,location):
         E = "-{}d {}m {:.2f}s".format(degrees, minutes, seconds)
 
     if object in SolarSystemBodies:
-        dest_path = '../IMAGES/' + object + '.jpeg'
+        dest_path = '../IMAGES/' + object + '.jpg'
       
     else:  
         # Automating locate elements for data retrieving

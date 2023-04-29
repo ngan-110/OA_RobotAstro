@@ -83,7 +83,7 @@ longitude = float("{:.2f}".format(longitude))
 location = [latitude, longitude]
 
 
-object_list = ['M3','M87','M91']
+object_list = ['M3','M87','mars']
 
 
 # TO UPDATE EACH OF THE OBJECT HTMLS WITH LOCATION INFORMATION #
