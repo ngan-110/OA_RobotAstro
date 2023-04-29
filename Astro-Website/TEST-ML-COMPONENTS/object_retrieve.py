@@ -28,6 +28,7 @@ def get_object_icrs(time, location, object):
     SolarSystemBodies = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
     # Convert to lower case
     object = object.lower()
+    location = EarthLocation (lat=location[0],lon=location[1])
     altaz = AltAz(obstime=time, location=location)
     if object in SolarSystemBodies:
         # Get the RA and Dec of the object if in solar system
@@ -39,28 +40,33 @@ def get_object_icrs(time, location, object):
         # A celestial object in ICRS outside the solar system
         RADe_object = SkyCoord.from_name(object)
         no_interp = RADe_object.transform_to(altaz)  
+        az = no_interp.az.deg
+        alt = no_interp.alt.deg
         
         # IS THIS IMPORTANT TO THE USER?
-        #if alt > 0:
-            #print('Object is viewable from location of viewer')
-    return RADe_object
+        if alt > 0:
+            in_sky = True
+    return RADe_object, in_sky
 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from PIL import Image
 from io import BytesIO
 
-def run_analysis(object):
-    # Get location at specific observation site
-    obs_location = EarthLocation.of_address('New York, NY')
-    tz_name = TimezoneFinder().timezone_at(lng=obs_location.lon.degree, lat=obs_location.lat.degree)
+def get_time(location):
+    tz_name = TimezoneFinder().timezone_at(lng=location[1], lat=location[0])
     tz = pytz.timezone(tz_name)
     # Get time at observatory
     now = datetime.now(tz)
-    time = Time(now) # Observation time. Convert to Astropy format
+    time = Time(now)
+    return time
+
+def run_analysis(object,location):
+    time = get_time()
+     # Observation time. Convert to Astropy format
     download_type = 'gif' # Or 'fits'
     data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
-    RADe_object = get_object_icrs(time, obs_location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
+    RADe_object = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
     RA_deg = RADe_object.ra.deg
     DE_deg = RADe_object.dec.deg
 
@@ -104,7 +110,7 @@ def run_analysis(object):
 
     # Define the source and destination paths
     src_path = image_file_name
-    dest_path = '/Users/alexandrasavino/Desktop/Astro-Website/PAGES/' + image_file_name
+    dest_path = 'Astro-Website/PAGES/' + image_file_name
 
     # Move the file to the destination directory
     shutil.move(src_path, dest_path)
