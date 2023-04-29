@@ -28,8 +28,10 @@ def modify_obj_page(obj_page, OBJ, object_list):
         modified_obj = modified_obj.replace(OBJ, object_list[1])
     if OBJ == OBJ_3:
         modified_obj = modified_obj.replace(OBJ, object_list[2])
+    file_content = modified_obj.read()
+    file_str = str(file_content)
     with open(obj_page,'w',encoding='utf-8') as file:
-        file.write(modified_obj)
+        file.write(file_str)
 
 object_list = generate_obj_list(popular_topics)
 modify_obj_page(obj_1_page, OBJ_1, object_list)
