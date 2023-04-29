@@ -9,6 +9,8 @@ import nltk
 import pandas as pd
 import re
 
+
+
 # Reads headlines.txt file into list 
 def read_file(filename):
     with open(filename, 'r') as f:
@@ -34,7 +36,11 @@ def read_links(filename):
     with open(filename, 'r') as l:
         links = [line.strip() for line in l]
         return links
-    
+
+words = read_file_word('data/popular_topics.txt')
+headlines = read_file('data/headlines.txt')
+links = read_links('data/links.txt')
+
 # Returns nouns from string
 def return_noun(line):
     # function to test if something is a noun
@@ -43,12 +49,6 @@ def return_noun(line):
     tokenized = nltk.word_tokenize(line)
     nouns = [word for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
     return nouns
-
-
-words = read_file_word('data/popular_topics.txt')
-headlines = read_file('data/headlines.txt')
-links = read_links('data/links.txt')
-
 
 # Gets the headlines that have the top words
 def get_headlines(words, headlines):
@@ -63,7 +63,6 @@ def get_headlines(words, headlines):
 
 # Find link for given headline and add it to list_links with headline
 def get_links(popular_headlines, headlines, links):
-    
     list_links = []
     for x in popular_headlines:
         if x in headlines:
@@ -129,8 +128,6 @@ def make_word_lists():
     more_exoplanets =  [ 'Proxima Centauri b','TRAPPIST-1b','TRAPPIST-1c','TRAPPIST-1e','TRAPPIST-1f','TRAPPIST-1g','TRAPPIST-1h','Tau Cetie',
                         'Tau Cetif','Ross 128b','LHS 1140b', 'Wolf 1061c','Wolf 1061d','Kepler-1649c','Gliese 667Cc','Gliese 667Cf','Gliese 667Ce',
                         'HD-40307g','Gliese 163c','Gliese 832c','Gliese 667Cb']
-    
-
 
     # Create one total list
     total_list = messier+NGC+d_planets+mars_moons+named_uranus_names+named_jupiter_moons+named_neptune_moons+named_pluto_moons+named_saturn_moons+exoplanet_names+more_exoplanets

@@ -1,3 +1,5 @@
+#pip install timezonefinder
+
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -16,7 +18,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from PIL import Image
+from io import BytesIO
 
+data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
 SolarSystemBodies = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
 
 def get_nouns(filename):
@@ -27,7 +34,6 @@ def get_nouns(filename):
     return nouns
 
 def get_object_icrs(time, location, object):
-    
     # Convert to lower case
     object = object.lower()
     location = EarthLocation (lat=location[0],lon=location[1])
@@ -44,7 +50,6 @@ def get_object_icrs(time, location, object):
     no_interp = RADe_object.transform_to(altaz)  
     az = no_interp.az.deg
     alt = no_interp.alt.deg
-    
     # IS THIS IMPORTANT TO THE USER?
     if alt > 0:
         in_sky = True
@@ -52,10 +57,6 @@ def get_object_icrs(time, location, object):
         in_sky = False
     return RADe_object, in_sky
 
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from PIL import Image
-from io import BytesIO
 
 def get_time(location):
     tz_name = TimezoneFinder().timezone_at(lng=location[1], lat=location[0])
@@ -69,7 +70,6 @@ def run_analysis(object,location):
     time = get_time(location)
      # Observation time. Convert to Astropy format
     download_type = 'gif' # Or 'fits'
-    data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
     RADe_object, in_sky = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
     RA_deg = RADe_object.ra.deg
     DE_deg = RADe_object.dec.deg
@@ -120,7 +120,6 @@ def run_analysis(object,location):
         src_path = image_file_name
         dest_path = '../IMAGES/' + image_file_name
         sys_dest_path = 'Astro-Website/IMAGES/' + image_file_name
-
 
         # Move the file to the destination directory
         shutil.move(src_path, sys_dest_path)
