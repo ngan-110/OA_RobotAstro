@@ -22,7 +22,7 @@ from object_retrieve import run_analysis
 
 for i in range(len(object_list)):
     # TODO: MAKE A COPY OF BELOW STUFF!!!
-    file_name = '/Users/alexandrasavino/Desktop/Astro-Website/PAGES/object-' + str(i+1) + '-page.html'
+    file_name = 'Astro-Website/PAGES/object-' + str(i+1) + '-page.html'
     RA_ref = '[[[RA-' + str(i+1) + ']]]'
     DEC_ref = '[[[DEC-' + str(i+1) + ']]]'
     IMAGE_ref = '[[[IMAGE-' + str(i+1) + ']]]'
