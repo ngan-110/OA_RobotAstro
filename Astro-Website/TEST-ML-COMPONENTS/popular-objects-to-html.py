@@ -19,6 +19,40 @@ def generate_obj_list(popular_topics):
                 break
     return object_list
 
+object_list = generate_obj_list(popular_topics)
+
+# TODO: Rewrite into functions
+# MODIFYING OBJECT-1-PAGE...
+with open(obj_1_page,'r',encoding='utf-8') as object_1_page:
+    content = object_1_page.read()
+modified_object_1_page = content.replace(OBJ_1,object_list[0])
+with open(obj_1_page,'w',encoding='utf-8') as file:
+    file.write(modified_object_1_page)
+
+
+# MODIFYING OBJECT-2-PAGE...
+with open(obj_2_page,'r',encoding='utf-8') as object_2_page:
+    content = object_2_page.read()
+modified_object_2_page = content.replace(OBJ_1,object_list[0])
+modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1])
+with open(obj_2_page,'w',encoding='utf-8') as file:
+    file.write(modified_object_2_page)
+
+
+# MODIFYING OBJECT-3-PAGE...
+with open(obj_3_page,'r',encoding='utf-8') as object_3_page:
+    content = object_3_page.read()
+modified_object_3_page = content.replace(OBJ_1,object_list[0])
+modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2])
+with open(obj_3_page,'w',encoding='utf-8') as file:
+    file.write(modified_object_3_page)
+
+
+
+'''
+
+
+
 
 def modify_obj_page(obj_page, OBJ, object_list):
     with open(obj_page,'r',encoding='utf-8') as obj_page:
@@ -33,35 +67,7 @@ def modify_obj_page(obj_page, OBJ, object_list):
     with open(obj_page,'w',encoding='utf-8') as file:
         file.write(file_str)
 
-object_list = generate_obj_list(popular_topics)
+
 modify_obj_page(obj_1_page, OBJ_1, object_list)
 modify_obj_page(obj_2_page, OBJ_2, object_list)
-modify_obj_page(obj_3_page, OBJ_3, object_list)
-
-'''
-# TODO: Rewrite into functions
-# MODIFYING OBJECT-1-PAGE...
-with open(obj_1_page,'r',encoding='utf-8') as object_1_page:
-    content = object_1_page.read()
-modified_object_1_page = content.replace('[[[OBJECT-1]]]',object_list[0])
-with open(obj_1_page,'w',encoding='utf-8') as file:
-    file.write(modified_object_1_page)
-
-
-# MODIFYING OBJECT-2-PAGE...
-with open(obj_2_page,'r',encoding='utf-8') as object_2_page:
-    content = object_2_page.read()
-modified_object_2_page = content.replace('[[[OBJECT-1]]]',object_list[0])
-modified_object_2_page = modified_object_2_page.replace('[[[OBJECT-2]]]',object_list[1])
-with open(obj_2_page,'w',encoding='utf-8') as file:
-    file.write(modified_object_2_page)
-
-
-# MODIFYING OBJECT-3-PAGE...
-with open(obj_3_page,'r',encoding='utf-8') as object_3_page:
-    content = object_3_page.read()
-modified_object_3_page = content.replace('[[[OBJECT-1]]]',object_list[0])
-modified_object_3_page = modified_object_3_page.replace('[[[OBJECT-3]]]',object_list[2])
-with open(obj_3_page,'w',encoding='utf-8') as file:
-    file.write(modified_object_3_page)
-'''
+modify_obj_page(obj_3_page, OBJ_3, object_list)'''
