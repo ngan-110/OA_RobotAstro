@@ -1,0 +1,169 @@
+/* INSTANTIATION */
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+html {
+    color: whitesmoke;
+    background-image: url("../IMAGES/dark_sky_background.jpg");
+    background-size: cover;
+    font-family: Odibee Sans, sans-serif;
+}
+
+/* THIS FORMATS BACKGROUND + PAGE HEADER */
+.background-shape { /* INSTANTIATION OF BACKGROUND GREY RECTANGE */
+  position: fixed;
+  left: 50px;
+  top: 50px;
+  width: calc(100% - 100px);
+  min-height: 635px;
+  height: calc(100vh - 100px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  z-index: -1;
+} .page-title {
+  position: absolute;
+  top: 40px;
+  left: 4vw;
+  font-size: (0px, 1.8vw, 20px);
+} .title-colon {
+  font-size:calc(5px + 2.8vw);
+  text-decoration: underline;
+} 
+
+/* THIS FORMATS THE OBJECT MENTIONED IN THE TITLE */
+.object-1-button {
+  border: whitesmoke inset 2px;
+  border-radius: 5px;
+  background-color: #00a300;
+  cursor: pointer;
+  font-size: 3vw;
+  padding-left: 0.4vw;
+  padding-right: 0.9vw;
+  transition: background-color 0.2s ease-in-out;
+  line-height: 1.01;
+} .object-1-name {
+  font-style: italic;
+  color: white;
+  font-family: Space Mono;
+  display: block;
+} .object-1-wrapper .object-1-button:hover {
+  background-color: #008a00;
+} .object-1-wrapper {
+  display: inline-block;
+}
+
+/* THIS FORMATS EVERYTHING 'BUTTON' */
+.button-container {
+    background-color: #c1c1c1;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 9px;
+    box-sizing: border-box;
+    position: absolute;
+    border: whitesmoke inset 2px;
+    border-radius: 5px;
+    left: calc(60px + 5vw);
+    top: calc(130px + 7vw);
+} .button {
+  color: whitesmoke;
+  font-family: Odibee Sans, sans-serif;
+  font-size: clamp(7px, 1.8vw, 16px);
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #00a300;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+  margin: 5px 2px;
+  border: clamp(4px, 0.3vw, 7px) solid whitesmoke;
+  border-radius: 4px;
+  width: clamp(60px, 10vw, 100px); 
+  height: clamp(60px, 10vw, 100px);
+  transition: background-color 0.1s ease-in-out;
+} .button:hover { 
+  background-color: rgb(208, 29, 29) !important;
+  transform: scale(1.025) !important;
+}
+
+
+/* THIS FORMATS OBJECT / IMAGE INFO */
+#image-info-container-container {
+  background-color: #c1c1c1;
+  padding: 8px;
+  box-sizing: border-box;
+  position: absolute;
+  left: calc(110px + 16vw);
+  top: calc(115px + 11vw);
+  height: auto;
+  width: calc(150px + 15vw);
+  border: whitesmoke inset 3px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-out;
+} #image-info-container {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+  position: relative;
+  background-color: #959393;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: calc(136px + 15vw);
+  border: clamp(4px, 0.3vw, 7px) solid whitesmoke;
+  border-radius: 5px;
+  display: inline-flex;
+  flex-direction: column;
+} #image-header {
+  font-size: calc(18px + 1vw);
+  margin-bottom: -12px;
+  margin-top: -3px;
+} .image-footer {
+  font-size: calc(12px + 1vw);
+  margin-bottom: calc(-18px + 0.3vw);
+} #possible-add-material {
+  margin-top: calc(18px + 0.8vw);
+  font-size: calc(10px + 0.8vw);
+  margin-bottom: 7px;
+}
+
+
+
+
+
+/* THIS FORMATS IMAGE + IMAGE CONTAINER */
+#telescope-image-container {
+  position: absolute; 
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 535px;
+  background-color: #c1c1c1;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 6px;
+  border: whitesmoke inset 3px;
+  margin: 0 auto;
+} #telescope-image-container img {
+  width: calc(130px + 11vw);
+  height: calc(130px + 11vw);
+  height: auto;
+  border: clamp(4px, 0.3vw, 7px) solid whitesmoke;
+  border-radius: 2px;
+} @media screen and (min-width: 970px) {
+  #telescope-image-container {
+    position: absolute;
+    left: calc(80% - 4.7vw) !important; /* calc(81% - 6.5vw) */
+    top: calc(51% + 2.5vw) !important;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease-out;
+  } #telescope-image-container img {
+      width: calc(-15px + 31.5vw);
+      height: calc(-15px + 31.5vw);
+      height: auto;
+      border: clamp(4px, 0.3vw, 7px) solid whitesmoke;
+      border-radius: 2px;
+  }
+}

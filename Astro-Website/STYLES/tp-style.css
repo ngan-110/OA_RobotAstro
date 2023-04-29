@@ -1,0 +1,37 @@
+/* SETTING UP HTML */
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
+html {
+    color: whitesmoke;
+    background-image: url("../images/dark_sky_background.jpg");
+    background-size: cover;
+    font-family: Odibee Sans, sans-serif;
+}
+/* THIS 'BODY' CLUMP IS RESPONSIBLE FOR BEING ABLE TO SCROLL!!!! */
+/*
+body {
+  height: 2000px;
+} */
+
+/* CENTERING TITLE PAGE HEADERS */
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  height: 90vh;
+  margin-top: -40px;
+} .title {
+  font-size: 15vw;
+  text-align: center;
+  margin-bottom: 0;
+} .subtitle {
+  font-size: 2vw;
+  text-align: center;
+  margin-top: 0;
+} .notification {
+  font-size: 15px;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  top: 60px;
+}
