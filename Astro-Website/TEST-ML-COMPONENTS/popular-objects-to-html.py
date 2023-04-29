@@ -39,10 +39,7 @@ object_list = generate_obj_list(popular_topics)
 
 # TODO: Rewrite into functions
 # MODIFYING OBJECT-1-PAGE...
-with open(obj_1_template,'r',encoding='utf-8') as object_1_template:
-    content = object_1_template.read()
 with open(obj_1_page,'w',encoding='utf-8') as obj1_file:
-    obj1_file = obj1_file.write(content)
     new_content = obj1_file.read()
 modified_object_1_page = new_content.replace(OBJ_1,object_list[0])
 with open(obj_1_page,'w',encoding='utf-8') as file:
@@ -50,10 +47,7 @@ with open(obj_1_page,'w',encoding='utf-8') as file:
 
 
 # MODIFYING OBJECT-2-PAGE...
-with open(obj_2_template,'r',encoding='utf-8') as object_2_template:
-    content = object_2_template.read()
 with open(obj_2_page,'w',encoding='utf-8') as obj2_file:
-    obj2_file = obj2_file.write(content)
     new_content = obj2_file.read()
 modified_object_2_page = new_content.replace(OBJ_1,object_list[0])
 modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1])
@@ -62,10 +56,7 @@ with open(obj_2_page,'w',encoding='utf-8') as file:
 
 
 # MODIFYING OBJECT-3-PAGE...
-with open(obj_2_template,'r',encoding='utf-8') as object_3_template:
-    content = object_3_template.read()
 with open(obj_3_page,'w',encoding='utf-8') as obj3_file:
-    obj3_file = obj3_file.write(content)
     new_content = obj3_file.read()
 modified_object_3_page = new_content.replace(OBJ_1,object_list[0])
 modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2])
