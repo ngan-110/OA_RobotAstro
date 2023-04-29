@@ -22,7 +22,9 @@ from object_retrieve import get_time
 time = get_time(location)
 
 #TEST OBJECT
-object = "M3"
+object = "mars"
+
+
 
 RADe_object,in_sky = get_object_icrs(time,location,object)
 
@@ -32,6 +34,16 @@ else:
     statement = "THIS OBJECT IS BELOW YOUR HORIZON"
 
 title_string = "LAT: " + str(latitude) + " LONG: " + str(longitude) + " -- " + statement
-print(title_string)
 
+
+
+
+
+with open("Astro-Website/PAGES/object-1-page.html",'r',encoding='utf-8') as object_1_page:
+    content = object_1_page.read()
+
+content = content.replace("[[[IN-SKY-1]]]",title_string)
+
+with open("Astro-Website/PAGES/object-1-page.html",'w',encoding='utf-8') as object_1_page:
+    object_1_page.write(content)
 
