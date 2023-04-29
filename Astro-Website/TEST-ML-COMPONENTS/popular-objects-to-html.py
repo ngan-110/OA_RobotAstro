@@ -64,12 +64,57 @@ with open(obj_3_page,'w',encoding='utf-8') as file:
     file.write(modified_object_3_page)
 
 
+#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import json
+
+from urllib.request import urlopen
+
+urlopen("https://ipinfo.io/json")
+
+data = json.load(urlopen("https://ipinfo.io/json"))
+
+latitude = float(data['loc'].split(',')[0])
+latitude =  float("{:.2f}".format(latitude))
+longitude = float(data['loc'].split(',')[1])
+longitude = float("{:.2f}".format(longitude))
+
+location = [latitude, longitude]
+
+
+object_list = ['M3','M87','M91']
+
+
+# TO UPDATE EACH OF THE OBJECT HTMLS WITH LOCATION INFORMATION #
+from object_retrieve import run_analysis
+
+for i in range(len(object_list)):
+    # TODO: MAKE A COPY OF BELOW STUFF!!!
+    file_name = 'Astro-Website/PAGES/object-' + str(i+1) + '-page.html'
+    RA_ref = '[[[RA-' + str(i+1) + ']]]'
+    DEC_ref = '[[[DEC-' + str(i+1) + ']]]'
+    IMAGE_ref = '[[[IMAGE-' + str(i+1) + ']]]'
+    
+    RA, DEC, IMAGE_path = run_analysis(object_list[i],location)
+
+    # Updating object htmls with location information + images #
+    with open(file_name,'r',encoding='utf-8') as file:
+        content = file.read()
+    modified_file = content.replace(RA_ref,RA)
+    modified_file = modified_file.replace(DEC_ref,DEC)
+
+    modified_file = modified_file.replace(IMAGE_ref,IMAGE_path)
+
+    with open(file_name,'w',encoding='utf-8') as file:
+        file.write(modified_file)
+
+
+
+
+
 
 '''
-
-
-
-
 def modify_obj_page(obj_page, OBJ, object_list):
     with open(obj_page,'r',encoding='utf-8') as obj_page:
         content = obj_page.read()

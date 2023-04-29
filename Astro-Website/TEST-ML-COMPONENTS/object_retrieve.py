@@ -46,6 +46,8 @@ def get_object_icrs(time, location, object):
         # IS THIS IMPORTANT TO THE USER?
         if alt > 0:
             in_sky = True
+        else:
+            in_sky = False
     return RADe_object, in_sky
 
 from selenium.webdriver.common.keys import Keys
@@ -62,11 +64,11 @@ def get_time(location):
     return time
 
 def run_analysis(object,location):
-    time = get_time()
+    time = get_time(location)
      # Observation time. Convert to Astropy format
     download_type = 'gif' # Or 'fits'
     data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
-    RADe_object = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
+    RADe_object, in_sky = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
     RA_deg = RADe_object.ra.deg
     DE_deg = RADe_object.dec.deg
 
@@ -110,11 +112,11 @@ def run_analysis(object,location):
 
     # Define the source and destination paths
     src_path = image_file_name
-    dest_path = 'Astro-Website/PAGES/' + image_file_name
+    dest_path = '../IMAGES/' + image_file_name
+    sys_dest_path = 'Astro-Website/IMAGES/' + image_file_name
+
 
     # Move the file to the destination directory
-    shutil.move(src_path, dest_path)
+    shutil.move(src_path, sys_dest_path)
 
     return RA, DE, dest_path
-
-#run_analysis('M87')
