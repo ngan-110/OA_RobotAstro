@@ -50,7 +50,7 @@ with open(obj_1_page,'w',encoding='utf-8') as file:
 # MODIFYING OBJECT-2-PAGE...
 with open(obj_2_page,'r',encoding='utf-8') as obj2_file:
     new_content = obj2_file.read()
-modified_object_2_page = new_content.replace(OBJ_1,object_list[0])
+modified_object_2_page = new_content.replace(OBJ_1,object_list[0].upper())
 modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1].upper())
 with open(obj_2_page,'w',encoding='utf-8') as file:
     file.write(modified_object_2_page)
@@ -59,7 +59,7 @@ with open(obj_2_page,'w',encoding='utf-8') as file:
 # MODIFYING OBJECT-3-PAGE...
 with open(obj_3_page,'r',encoding='utf-8') as obj3_file:
     new_content = obj3_file.read()
-modified_object_3_page = new_content.replace(OBJ_1,object_list[0])
+modified_object_3_page = new_content.replace(OBJ_1,object_list[0].upper())
 modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2].upper())
 with open(obj_3_page,'w',encoding='utf-8') as file:
     file.write(modified_object_3_page)
