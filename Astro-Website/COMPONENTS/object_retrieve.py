@@ -83,10 +83,10 @@ def run_analysis(object,location):
     if degrees >= 0:
         DE = "+{}d {}m {:.2f}s".format(degrees, minutes, seconds)
     else:
-        E = "-{}d {}m {:.2f}s".format(degrees, minutes, seconds)
+        DE = "-{}d {}m {:.2f}s".format(degrees, minutes, seconds)
 
     if object in SolarSystemBodies:
-        dest_path = '../IMAGES/' + object + '.jpeg'
+        dest_path = '../IMAGES/' + object + '.jpg'
       
     else:  
         # Automating locate elements for data retrieving
@@ -124,4 +124,4 @@ def run_analysis(object,location):
         # Move the file to the destination directory
         shutil.move(src_path, sys_dest_path)
 
-    return RA, DE, dest_path
+    return RA, DE, dest_path, in_sky
