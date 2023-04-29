@@ -1,10 +1,10 @@
-hole
-galaxy
-star
-moon
-mars
 planet
-radio
+hole
+mars
+waves
+star
 image
+life
+photo
+radio
 stars
-exoplanet
