@@ -1,3 +1,5 @@
+#pip install timezonefinder
+
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -16,6 +18,13 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from PIL import Image
+from io import BytesIO
+
+data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
+SolarSystemBodies = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
 
 def get_nouns(filename):
     nouns = []
@@ -25,7 +34,6 @@ def get_nouns(filename):
     return nouns
 
 def get_object_icrs(time, location, object):
-    SolarSystemBodies = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
     # Convert to lower case
     object = object.lower()
     location = EarthLocation (lat=location[0],lon=location[1])
@@ -39,21 +47,16 @@ def get_object_icrs(time, location, object):
     else:
         # A celestial object in ICRS outside the solar system
         RADe_object = SkyCoord.from_name(object)
-        no_interp = RADe_object.transform_to(altaz)  
-        az = no_interp.az.deg
-        alt = no_interp.alt.deg
-        
-        # IS THIS IMPORTANT TO THE USER?
-        if alt > 0:
-            in_sky = True
-        else:
-            in_sky = False
+    no_interp = RADe_object.transform_to(altaz)  
+    az = no_interp.az.deg
+    alt = no_interp.alt.deg
+    # IS THIS IMPORTANT TO THE USER?
+    if alt > 0:
+        in_sky = True
+    else:
+        in_sky = False
     return RADe_object, in_sky
 
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from PIL import Image
-from io import BytesIO
 
 def get_time(location):
     tz_name = TimezoneFinder().timezone_at(lng=location[1], lat=location[0])
@@ -67,7 +70,6 @@ def run_analysis(object,location):
     time = get_time(location)
      # Observation time. Convert to Astropy format
     download_type = 'gif' # Or 'fits'
-    data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
     RADe_object, in_sky = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
     RA_deg = RADe_object.ra.deg
     DE_deg = RADe_object.dec.deg
@@ -83,40 +85,43 @@ def run_analysis(object,location):
     else:
         E = "-{}d {}m {:.2f}s".format(degrees, minutes, seconds)
 
-    # Automating locate elements for data retrieving
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    browser.get(data_source)
-    ra = browser.find_element(By.NAME, 'r')
-    de = browser.find_element(By.NAME, 'd')
-    file = browser.find_element(By.XPATH, value="//select[@name='f']")
-    terms = browser.find_element(By.XPATH, value="//input[@value='      RETRIEVE IMAGE      ']")
+    if object in SolarSystemBodies:
+        dest_path = '../IMAGES/' + object + '.jpeg'
+      
+    else:  
+        # Automating locate elements for data retrieving
+        browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        browser.get(data_source)
+        ra = browser.find_element(By.NAME, 'r')
+        de = browser.find_element(By.NAME, 'd')
+        file = browser.find_element(By.XPATH, value="//select[@name='f']")
+        terms = browser.find_element(By.XPATH, value="//input[@value='      RETRIEVE IMAGE      ']")
 
-    # Feed RA-DE to the website
-    ra.send_keys(RA_deg)
-    de.send_keys(DE_deg)
-    file.send_keys(download_type) 
-    terms.click()
+        # Feed RA-DE to the website
+        ra.send_keys(RA_deg)
+        de.send_keys(DE_deg)
+        file.send_keys(download_type) 
+        terms.click()
 
-    # Assuming that `browser` is the `WebDriver` object
-    image = browser.find_element(By.XPATH, '//img[@style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);"]')
-    image_url = image.get_attribute('src')
+        # Assuming that `browser` is the `WebDriver` object
+        image = browser.find_element(By.XPATH, '//img[@style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);"]')
+        image_url = image.get_attribute('src')
 
-    # Downloading an image itself
-    import requests
-    response = requests.get(image_url)
-    image_file_name = str(object) + '.gif'
+        # Downloading an image itself
+        import requests
+        response = requests.get(image_url)
+        image_file_name = str(object) + '.gif'
 
-    with open(image_file_name, 'wb') as f:
-        f.write(response.content)
-    import shutil
+        with open(image_file_name, 'wb') as f:
+            f.write(response.content)
+        import shutil
 
-    # Define the source and destination paths
-    src_path = image_file_name
-    dest_path = '../IMAGES/' + image_file_name
-    sys_dest_path = 'Astro-Website/IMAGES/' + image_file_name
+        # Define the source and destination paths
+        src_path = image_file_name
+        dest_path = '../IMAGES/' + image_file_name
+        sys_dest_path = 'Astro-Website/IMAGES/' + image_file_name
 
-
-    # Move the file to the destination directory
-    shutil.move(src_path, sys_dest_path)
+        # Move the file to the destination directory
+        shutil.move(src_path, sys_dest_path)
 
     return RA, DE, dest_path
