@@ -99,12 +99,13 @@ for i in range(len(object_list)):
     IMAGE_ref = '[[[IMAGE-' + str(i+1) + ']]]'
     
     RA, DEC, IMAGE_path, in_sky = run_analysis(object_list[i],location)
+    #DEC = str(DEC)
 
     if in_sky == True:
         statement = "THIS OBJECT IS UP IN YOUR SKY!"
     else:
         statement = "THIS OBJECT IS BELOW YOUR HORIZON"
-    in_sky_statement = "YOUR LAT: " + str(latitude) + " YOUR LONG: " + str(longitude) + " ... <b>" + statement + "</b>"
+    in_sky_statement = "OBSERVER LAT: " + str(latitude) + " OBSERVER LONG: " + str(longitude) + " ... <br>" + statement + "</br>"
 
     # Updating object htmls with location information + images #
     with open(file_name,'r',encoding='utf-8') as file:
@@ -117,3 +118,27 @@ for i in range(len(object_list)):
 
     with open(file_name,'w',encoding='utf-8') as file:
         file.write(modified_file)
+
+
+
+
+
+
+'''
+def modify_obj_page(obj_page, OBJ, object_list):
+    with open(obj_page,'r',encoding='utf-8') as obj_page:
+        content = obj_page.read()
+    modified_obj = content.replace(OBJ,object_list[0])
+    if OBJ == OBJ_2:
+        modified_obj = modified_obj.replace(OBJ, object_list[1])
+    if OBJ == OBJ_3:
+        modified_obj = modified_obj.replace(OBJ, object_list[2])
+    file_content = modified_obj.read()
+    file_str = str(file_content)
+    with open(obj_page,'w',encoding='utf-8') as file:
+        file.write(file_str)
+
+
+modify_obj_page(obj_1_page, OBJ_1, object_list)
+modify_obj_page(obj_2_page, OBJ_2, object_list)
+modify_obj_page(obj_3_page, OBJ_3, object_list)'''
