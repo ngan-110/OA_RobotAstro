@@ -105,7 +105,7 @@ for i in range(len(object_list)):
         statement = "THIS OBJECT IS UP IN YOUR SKY!"
     else:
         statement = "THIS OBJECT IS BELOW YOUR HORIZON"
-    in_sky_statement = "YOUR LAT: " + str(latitude) + " YOUR LONG: " + str(longitude) + " ... <b>" + statement + "</b>"
+    in_sky_statement = "OBSERVER LAT: " + str(latitude) + " OBSERVER LONG: " + str(longitude) + " ... <br>" + statement + "</br>"
 
     # Updating object htmls with location information + images #
     with open(file_name,'r',encoding='utf-8') as file:
