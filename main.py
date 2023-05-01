@@ -2,10 +2,13 @@
 
 # import the required modules
 import os
+import sys
 import argparse
-import website_scrapping
-import keyword_processing
-import back_search
+sys.path.append('/Users/rhessa/OA_RobotAstro/Astro-Website')
+from COMPONENTS import website_scrapping
+from COMPONENTS import keyword_processing
+#from COMPONENTS import back_search
+
 
 # define the main function
 def main():
@@ -18,7 +21,6 @@ def main():
         website_scrapping.run_sites()
     
     keyword_processing.run_keywords()
-    back_search.run_back_search()
 
 
 if __name__ == '__main__':

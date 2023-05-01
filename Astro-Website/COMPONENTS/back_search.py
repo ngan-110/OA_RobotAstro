@@ -6,8 +6,12 @@ import nltk
 #nltk.download('punkt')
 #nltk.download('averaged_perceptron_tagger')
 #%pip install xlrd
+from bs4 import BeautifulSoup
 import pandas as pd
 import re
+import requests
+from collections.abc import Mapping
+from gensim import summarization
 
 
 
@@ -150,12 +154,12 @@ def summarize_artciles(list_links):
         article_text = '\n'.join([p.text for p in paragraphs])
 
         # Summarize article content
-        if (len(summarize(article_text, ratio=0.4, split=True)))==0:
-            summary = summarize(article_text, ratio=0.4, split=True)
+        if (len(summarization.summarize(article_text, ratio=0.4, split=True)))==0:
+            summary = summarization.summarize(article_text, ratio=0.4, split=True)
             # Append summary
             summary_list.append(summary)
         else:
-            summary = summarize(article_text, ratio=0.4, split=True)
+            summary = summarization.summarize(article_text, ratio=0.4, split=True)
             # Append summary
             summary_list.append(summary)
     return summary_list
