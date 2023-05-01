@@ -8,11 +8,11 @@
   </div>
   <div id="option-container">
     <ul id="nav-links" style="font-family: Space Mono; font-size: 15px;">
-      <li class="option"><a href="../PAGES/object-1-page.html" target="_parent"> Home </a></li>
-      <li class="option"><a href="../PAGES/about-us.html" target="_parent"> About the Creators </a></li>
-      <li class="option"><a href="../PAGES/final-paper-page.html" target="_parent"> Project's Final Paper </a></li>
+      <li class="option"><a href="../PAGES/object-1-page.html" target="_parent"> Home Base </a></li>
+      <li class="option"><a href="../PAGES/about-us.html" target="_parent"> About Us </a></li>
+      <li class="option"><a href="../PAGES/final-paper-page.html" target="_parent"> Final Paper </a></li>
       <!-- NAME BELOW SUBJECT TO CHANGE! -->
-      <li class="option"><a href="../PAGES/ref-site-page.html"> Today's References </a></li>
+      <li class="option"><a href="../PAGES/ref-site-page.html"> References </a></li>
     </ul>
   </div>
 </html>
@@ -22,12 +22,6 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-
-  /* body {
-    background-image: url("IMG_0177.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  } */
 
   /* SELECTOR FOR HAMBURGER DESIGN */
   #hamburger-container { 
@@ -60,6 +54,9 @@
     transform: scale(1.1);
   } .option {
     color: whitesmoke;
+    font-size: calc(7.5px + 0.4vw); /* THIS IS HOW OPTOIN BOX FONT IS CONTROLLED */
+    width: calc(60px + 5vw);
+    min-width: 85px;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid whitesmoke;
     border-radius: 5px;
@@ -69,22 +66,19 @@
     padding: 4px 8px;
     transition: font-size 0.2s ease-in-out;
     backdrop-filter: blur(10px);
-
-    width: 200px;
-    min-width: 200px;
   } #option-container {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     white-space: nowrap;
-
     position: absolute;
-    top: -7px;
     left: -10px;
+    top: -7px;
   } .option:hover {
     text-decoration: underline;
     box-shadow: 2px -1px 0px 0px rgba(0,0,0,0.5);
-    font-size: 15.5px;
+    font-size: calc(8.5px + 0.4vw);
+    text-align: center;
   } .option a {
     color: whitesmoke;
     text-decoration: none;
@@ -99,6 +93,8 @@
     display: block;
     opacity: 1;
   }
+
+
 </style>  
 
 
