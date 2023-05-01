@@ -3,19 +3,21 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width" />
-        <title> Project Report </title>
+        <title> References </title>
         <link href="../STYLES/rsp-style.css" rel="stylesheet" />
         <link href="../STYLES/opening-transition.css" rel="stylesheet" />
     </head>
     <body>
+        <div class="background-shape"></div>
         <iframe src="../UNIVERSALS/common-footer.html" 
-            style="position: fixed; bottom: -90px; left: -7px;" 
-            frameborder="0" scrolling="no"></iframe>
-        <!-- <iframe src="../UNIVERSALS/common-header.html"
-            style="position: fixed; top:0; left: 0; width: 
-            100%; height: 100%;" frameborder="0" 
-            scrolling="no"></iframe> -->
+        style="position: fixed; bottom: -90px; left: -7px; z-index: 9999" 
+        frameborder="0" scrolling="no"></iframe>
 
+        <iframe src="../UNIVERSALS/common-header.html"
+        style="position: fixed; top:0; left: 0; 
+        width: 100%; height: 100%; z-index: 1;"
+        frameborder="0" scrolling="no"></iframe>
+        
         <div id="ref-site-page" class="heading-container">
             <h1 class="title">
                 <u> <span class="smaller-font" style="font-size: 2rem; vertical-align: middle;"> our </span>
@@ -29,7 +31,8 @@
             </h2>
         </div>
 
-        <div class="content-container">
+        <div class="content-container"
+        style="position: relative; z-index: 999;">
             <ul id="list-container" class="the-blurb-itself" style="list-style-type: square;">
                 <li><i>"Pentagon Has 'no Credible Evidence' Of Aliens Or Ufos That Defy Physics"</i>-<a href="https://www.space.com/pentagon-aaro-ufo-hearing-april-2023
 " style="color: #02ff02;">https://www.space.com/pentagon-aaro-ufo-hearing-april-2023
