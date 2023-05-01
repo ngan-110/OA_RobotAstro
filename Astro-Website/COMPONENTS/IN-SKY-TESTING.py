@@ -10,10 +10,12 @@ data = json.load(urlopen("https://ipinfo.io/json"))
 
 latitude = float(data['loc'].split(',')[0])
 latitude =  float("{:.2f}".format(latitude))
+latitude =  float("{:.2f}".format(latitude))
 longitude = float(data['loc'].split(',')[1])
 longitude = float("{:.2f}".format(longitude))
 
 location = [latitude, longitude]
+print(location)
 
 
 from object_retrieve import get_object_icrs 
@@ -27,6 +29,7 @@ object = "mars"
 
 
 RADe_object,in_sky = get_object_icrs(time,location,object)
+print(in_sky)
 
 if in_sky == True:
     statement = "THIS OBJECT IS UP IN YOUR SKY!"

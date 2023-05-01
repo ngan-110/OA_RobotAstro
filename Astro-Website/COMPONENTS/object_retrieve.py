@@ -59,7 +59,7 @@ def get_object_icrs(time, location, object):
 
 
 def get_time(location):
-    tz_name = TimezoneFinder().timezone_at(lng=location[1], lat=location[0])
+    tz_name = TimezoneFinder().timezone_at(lng=location[1],lat=location[0])
     tz = pytz.timezone(tz_name)
     # Get time at observatory
     now = datetime.now(tz)
