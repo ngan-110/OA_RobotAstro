@@ -65,4 +65,6 @@ def run_keywords():
         for items in t:
             f.write(items[0]+ '\n')
     f.close
+    print('Done running keyword processing...')
+    print('Popular topics saved to data/popular_topics.txt')
 

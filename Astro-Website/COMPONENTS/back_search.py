@@ -191,4 +191,6 @@ def run_back_search():
         for items in reversed(object_ls):
             f.write(items+ '\n')
     f.close
+    print('Back search complete!')
+    print('Check the file "final_objects.txt" for the results!')
 

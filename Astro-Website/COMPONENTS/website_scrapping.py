@@ -166,4 +166,5 @@ def run_sites():
     site_2(urls,f,l,ignore)
     site_3(urls,f,l,ignore)
     site_4(urls,f,l,ignore)
+    print('Webscraping completed!')
 
