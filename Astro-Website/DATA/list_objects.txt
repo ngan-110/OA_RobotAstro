@@ -9,7 +9,7 @@ Io
 Ganymede
 Europa
 Callisto
+Phobos
 Pluto
 NGC 346
-NGC 628
 M87

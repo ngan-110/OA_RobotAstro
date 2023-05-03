@@ -19,13 +19,13 @@ from selenium.webdriver.common.keys import Keys
 
 
 # Define constants
-final_objects = 'Astro-Website/DATA/list_objects.txt'
-obj_1_template = 'Astro-Website/PAGES/TEMPLATES/object-1-page.html'
-obj_2_template = 'Astro-Website/PAGES/TEMPLATES/object-2-page.html'
-obj_3_template = 'Astro-Website/PAGES/TEMPLATES/object-3-page.html'
-obj_1_page = 'Astro-Website/PAGES/object-1-page.html'
-obj_2_page = 'Astro-Website/PAGES/object-2-page.html'
-obj_3_page = 'Astro-Website/PAGES/object-3-page.html'
+final_objects = 'Astro-Website\DATA\list_objects.txt'
+obj_1_template = 'Astro-Website\PAGES\TEMPLATES\object-1-page.html'
+obj_2_template = 'Astro-Website\PAGES\TEMPLATES\object-2-page.html'
+obj_3_template = 'Astro-Website\PAGES\TEMPLATES\object-3-page.html'
+obj_1_page = 'Astro-Website\PAGES\object-1-page.html'
+obj_2_page = 'Astro-Website\PAGES\object-2-page.html'
+obj_3_page = 'Astro-Website\PAGES\object-3-page.html'
 OBJ_1 = "[[[OBJECT-1]]]"
 OBJ_2 = "[[[OBJECT-2]]]"
 OBJ_3 = "[[[OBJECT-3]]]"
@@ -47,8 +47,11 @@ def get_object_icrs(time, location, object):
     else:
         # A celestial object in ICRS outside the solar system
         # Check if astropy rasies an error
-        if (name_resolve(object)._parse_response() == None):
-            return None, False
+        try:
+            SkyCoord.from_name(object)
+        except astropy.coordinates.name_resolve.NameResolveError:
+            # If there is an error, return None
+            return None, None
         RADe_object = SkyCoord.from_name(object)
     no_interp = RADe_object.transform_to(altaz)  
     az = no_interp.az.deg
@@ -73,9 +76,9 @@ def run_analysis(object,location):
     download_type = 'gif' # Or 'fits'
     RADe_object, in_sky = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
     if RADe_object is None:
-        RA = None
-        DE = None
-        dest_path = os.path.join('Astro-Website/IMAGES', 'not_found.jpg')
+        RA = 'None'
+        DE = 'None'
+        dest_path = os.path.join('../IMAGES', 'not_found.jpg')
         return RA, DE, dest_path, in_sky
     RA_deg = RADe_object.ra.deg
     DE_deg = RADe_object.dec.deg
@@ -89,7 +92,7 @@ def run_analysis(object,location):
     if degrees >= 0:
         DE = "+{}d {}m {:.2f}s".format(degrees, minutes, seconds)
     else:
-        DE = "-{}d {}m {:.2f}s".format(degrees, minutes, seconds)
+        DE = "{}d {}m {:.2f}s".format(degrees, minutes, seconds)
 
     if object in SolarSystemBodies:
         dest_path = os.path.join('Astro-Website/IMAGES', object + '.jpg')
@@ -151,37 +154,37 @@ def update_obj_html():
     if os.path.exists(obj_1_page):
         os.remove(obj_1_page)
     # Copy the template to the object page
-    os.system('cp ' + obj_1_template + ' ' + obj_1_page)
+    os.system('copy ' + obj_1_template + ' ' + obj_1_page)
     if os.path.exists(obj_2_page):
         os.remove(obj_2_page) 
-    os.system('cp ' + obj_2_template + ' ' + obj_2_page)  
+    os.system('copy ' + obj_2_template + ' ' + obj_2_page)  
     if os.path.exists(obj_3_page):
         os.remove(obj_3_page)
-    os.system('cp ' + obj_3_template + ' ' + obj_3_page)
+    os.system('copy ' + obj_3_template + ' ' + obj_3_page)
     # Generate the object list
     object_list = generate_obj_list(final_objects)
     # TODO: Rewrite into functions
     # MODIFYING OBJECT-1-PAGE...
-    with open(obj_1_page,'r') as obj1_file:
+    with open(obj_1_page,'r', encoding='utf-8') as obj1_file:
         new_content = obj1_file.read()
     modified_object_1_page = new_content.replace(OBJ_1,object_list[0].upper())
-    with open(obj_1_page,'w') as file:
+    with open(obj_1_page,'w', encoding='utf-8') as file:
         file.write(modified_object_1_page)
 
     # MODIFYING OBJECT-2-PAGE...
-    with open(obj_2_page,'r',encoding='utf-8') as obj2_file:
+    with open(obj_2_page,'r', encoding='utf-8') as obj2_file:
         new_content = obj2_file.read()
     modified_object_2_page = new_content.replace(OBJ_1,object_list[0].upper())
     modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1].upper())
-    with open(obj_2_page,'w',encoding='utf-8') as file:
+    with open(obj_2_page,'w', encoding='utf-8') as file:
         file.write(modified_object_2_page)
 
     # MODIFYING OBJECT-3-PAGE...
-    with open(obj_3_page,'r',encoding='utf-8') as obj3_file:
+    with open(obj_3_page,'r', encoding='utf-8') as obj3_file:
         new_content = obj3_file.read()
     modified_object_3_page = new_content.replace(OBJ_1,object_list[0].upper())
     modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2].upper())
-    with open(obj_3_page,'w',encoding='utf-8') as file:
+    with open(obj_3_page,'w', encoding='utf-8') as file:
         file.write(modified_object_3_page)
         
     # Print complete messages

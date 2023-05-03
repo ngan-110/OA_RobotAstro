@@ -18,7 +18,7 @@ def main():
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
     
-    print('Running website scrapping...')
+    print('RUNNING WEBSITE SCRAPPING...')
     website_scrapping.run_sites()
     
     print('Running keyword processing...')

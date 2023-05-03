@@ -1,6 +1,6 @@
 # THIS READS FROM HEADLINES.TXT TO SUB IN [[[OBJECT-1,2,3]]] IN EACH HTML FILE #
 link_txt = 'Astro-Website/DATA/links.txt'
-headline_txt = 'data/headlines.txt'
+headline_txt = 'Astro-Website/DATA//headlines.txt'
 ref_site_page = 'Astro-Website/PAGES/ref-site-page.html'
 
 def update_headline_html():
