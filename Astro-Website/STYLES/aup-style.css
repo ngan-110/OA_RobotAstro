@@ -9,7 +9,8 @@ html {
     background-attachment: fixed;
 }
 
-.background-shape { /* INSTANTIATION OF BACKGROUND GREY RECTANGE */
+/* INSTANTIATION OF BACKGROUND GREY RECTANGE */
+.background-shape {
     position: fixed;
     left: 50px;
     top: 50px;
@@ -41,13 +42,13 @@ html {
     margin-top: 2px;
 }
 
+/* ORGANIZES / STYLIZES THE BIOS */
 .image-grid {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center; /* centers the grid items horizontally */
+    justify-items: center;
     margin-top: calc(95px - 7vw);
-} 
-.image-grid-item {
+} .image-grid-item {
     display: flex;
     flex-direction: row;
     text-align: left;
@@ -61,16 +62,13 @@ html {
     margin-bottom: calc(40px - 0.7vw);
     width: calc(100% - 140px);
     height: calc(100px + 2vw);
-} 
-
-.image-grid-item img {
+} .image-grid-item img {
     width: calc(95px + 4vw);
     margin-right: 10px;
     height: auto;
     border-radius: 6px;
     border: clamp(2.2px, 0.3vw, 3.5px) solid whitesmoke;
-} 
-.image-grid-item p {
+} .image-grid-item p {
     font-family: Space Mono;
     word-spacing: -1px;
     line-height: 1.4em;
@@ -78,6 +76,7 @@ html {
     font-size: clamp(7px, 1.8vw, 16px);
 }
 
+/* ALLOWS FOR LINK HOVER COLOR CHANGE */
 a:hover {
     color: #fd3d3d !important;
     font-size: 1.015em;

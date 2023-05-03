@@ -120,15 +120,9 @@ html {
 } .image-footer {
   font-size: calc(12px + 1vw);
   margin-bottom: calc(-18px + 0.3vw);
-} #possible-add-material {
-  margin-top: calc(18px + 0.8vw);
-  font-size: calc(10px + 0.8vw);
-  margin-bottom: 7px;
+} .image-footer:last-child {
+  margin-bottom: 10px;
 }
-
-
-
-
 
 /* THIS FORMATS IMAGE + IMAGE CONTAINER */
 #telescope-image-container {
