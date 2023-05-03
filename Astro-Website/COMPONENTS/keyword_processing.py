@@ -2,8 +2,6 @@ import os
 import operator
 import numpy as np
 import nltk
-#nltk.download('punkt')
-#nltk.download('averaged_perceptron_tagger')
 
 # Read string from text file and returns all nouns from file
 def read_file(filename):

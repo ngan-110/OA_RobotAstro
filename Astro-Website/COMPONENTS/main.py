@@ -5,12 +5,13 @@ import os
 import sys
 import argparse
 sys.path.append('/Users/rhessa/OA_RobotAstro/Astro-Website')
-from COMPONENTS import website_scrapping
-from COMPONENTS import keyword_processing
-from COMPONENTS import back_search
-from COMPONENTS import popular_objects_to_html
-from COMPONENTS import headline_to_html
-#from COMPONENTS import back_search
+
+# import the components
+import website_scrapping
+import keyword_processing
+import back_search
+import popular_objects_to_html
+import headline_to_html
 
 
 # define the main function

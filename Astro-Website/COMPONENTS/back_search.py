@@ -1,7 +1,3 @@
-#%pip install BeautifulSoup4
-#%pip install requests
-#%pip install gensim==3.6.0
-#%pip install nltk
 import nltk
 #nltk.download('punkt')
 #nltk.download('averaged_perceptron_tagger')

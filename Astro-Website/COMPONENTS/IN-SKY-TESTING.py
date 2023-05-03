@@ -1,7 +1,6 @@
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 import json
-
 from urllib.request import urlopen
 
 urlopen("https://ipinfo.io/json")

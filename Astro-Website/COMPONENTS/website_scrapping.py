@@ -1,13 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-#%pip install beautifulsoup4
-
 # Cell scrapes website for space.com headlines and outputs to the headlines.txt file 
 import requests
 from bs4 import BeautifulSoup
 import re
-
     
 #Site 1
 def site_1(urls_h3,f,l):
