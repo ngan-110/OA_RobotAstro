@@ -2,9 +2,7 @@
 
 # import the required modules
 import os
-import sys
 import argparse
-sys.path.append('/Users/rhessa/OA_RobotAstro/Astro-Website')
 
 # import the components
 import website_scrapping
