@@ -4,8 +4,6 @@ ssl._create_default_https_context = ssl._create_unverified_context
 import json
 from urllib.request import urlopen
 import os
-import operator
-import numpy as np
 import astropy
 from astropy.time import Time
 from astropy.coordinates import solar_system_ephemeris, SkyCoord, EarthLocation, AltAz
@@ -20,16 +18,16 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 
 # Define constants
-final_objects = 'Astro-Website/DATA/final_objects.txt'
-obj_1_template = 'Astro-Website/PAGES/template/object-1-page.html'
-obj_2_template = 'Astro-Website/PAGES/template/object-2-page.html'
-obj_3_template = 'Astro-Website/PAGES/template/object-3-page.html'
-obj_1_page = 'Astro-Website/PAGES/object-1-page.html'
-obj_2_page = 'Astro-Website/PAGES/object-2-page.html'
-obj_3_page = 'Astro-Website/PAGES/object-3-page.html'
-OBJ_1 = '[[[OBJECT-1]]]'
-OBJ_2 = '[[[OBJECT-2]]]'
-OBJ_3 = '[[[OBJECT-3]]]'
+final_objects = 'Astro-Website\DATA\list_objects.txt'
+obj_1_template = 'Astro-Website\PAGES\TEMPLATES\object-1-page.html'
+obj_2_template = 'Astro-Website\PAGES\TEMPLATES\object-2-page.html'
+obj_3_template = 'Astro-Website\PAGES\TEMPLATES\object-3-page.html'
+obj_1_page = 'Astro-Website\PAGES\object-1-page.html'
+obj_2_page = 'Astro-Website\PAGES\object-2-page.html'
+obj_3_page = 'Astro-Website\PAGES\object-3-page.html'
+OBJ_1 = "[[[OBJECT-1]]]"
+OBJ_2 = "[[[OBJECT-2]]]"
+OBJ_3 = "[[[OBJECT-3]]]"
 data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
 SolarSystemBodies = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
 
@@ -85,7 +83,8 @@ def run_analysis(object,location):
         DE = "-{}d {}m {:.2f}s".format(degrees, minutes, seconds)
 
     if object in SolarSystemBodies:
-        dest_path = '../IMAGES/' + object + '.jpg'
+        dest_path = os.path.join('Astro-Website/IMAGES', object + '.jpg')
+        #dest_path = '../IMAGES/' + object + '.jpg'
       
     else:  
         # Automating locate elements for data retrieving
@@ -117,8 +116,8 @@ def run_analysis(object,location):
 
         # Define the source and destination paths
         src_path = image_file_name
-        dest_path = '../IMAGES/' + image_file_name
-        sys_dest_path = 'Astro-Website/IMAGES/' + image_file_name
+        dest_path = os.path.join('../IMAGES', image_file_name)
+        sys_dest_path = os.path.join('Astro-Website/IMAGES', image_file_name)
 
         # Move the file to the destination directory
         shutil.move(src_path, sys_dest_path)
@@ -126,7 +125,7 @@ def run_analysis(object,location):
     return RA, DE, dest_path, in_sky
 
 def generate_obj_list(objects):
-    with open(objects,'r',encoding='utf-8') as pop_topics_file:
+    with open(objects,'r') as pop_topics_file:
         object_list = []
         counter = 0
         for line in pop_topics_file:
@@ -142,21 +141,23 @@ def update_obj_html():
     # Remove the old object pages and replace them with the templates
     if os.path.exists(obj_1_page):
         os.remove(obj_1_page)
-        os.system('cp ' + obj_1_template + ' ' + obj_1_page)
+    # Copy the template to the object page
+    os.system('cp ' + obj_1_template + ' ' + obj_1_page)
+    print('copy ' + obj_1_template + ' ' + obj_1_page)
     if os.path.exists(obj_2_page):
         os.remove(obj_2_page) 
-        os.system('cp ' + obj_2_template + ' ' + obj_2_page)  
+    os.system('copy ' + obj_2_template + ' ' + obj_2_page)  
     if os.path.exists(obj_3_page):
         os.remove(obj_3_page)
-        os.system('cp ' + obj_3_template + ' ' + obj_3_page)
+    os.system('copy ' + obj_3_template + ' ' + obj_3_page)
     # Generate the object list
     object_list = generate_obj_list(final_objects)
     # TODO: Rewrite into functions
     # MODIFYING OBJECT-1-PAGE...
-    with open(obj_1_page,'r',encoding='utf-8') as obj1_file:
+    with open(obj_1_page,'r') as obj1_file:
         new_content = obj1_file.read()
     modified_object_1_page = new_content.replace(OBJ_1,object_list[0].upper())
-    with open(obj_1_page,'w',encoding='utf-8') as file:
+    with open(obj_1_page,'w') as file:
         file.write(modified_object_1_page)
 
     # MODIFYING OBJECT-2-PAGE...

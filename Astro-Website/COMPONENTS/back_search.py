@@ -1,7 +1,6 @@
 import nltk
-#nltk.download('punkt')
-#nltk.download('averaged_perceptron_tagger')
-#%pip install xlrd
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
@@ -183,10 +182,10 @@ def run_back_search():
     summary_list = summarize_artciles(list_links)
     object_ls = object_list(total_list, summary_list)
     # Print to new file called 'popular topics'
-    with open('Astro-Website/DATA/final_objects.txt', 'w') as f:
+    with open('Astro-Website/DATA/list_objects.txt', 'w') as f:
         for items in reversed(object_ls):
             f.write(items+ '\n')
     f.close
     print('Back search complete!')
-    print('Check the file "final_objects.txt" for the results!')
+    print('Check the file "list_objects.txt" for the results!')
 

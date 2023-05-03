@@ -1,7 +1,6 @@
-import os
 import operator
-import numpy as np
 import nltk
+
 
 # Read string from text file and returns all nouns from file
 def read_file(filename):
