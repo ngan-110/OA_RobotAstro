@@ -7,7 +7,7 @@ import os
 import astropy
 from astropy.time import Time
 from astropy.coordinates import solar_system_ephemeris, SkyCoord, EarthLocation, AltAz
-from astropy.coordinates import get_body
+from astropy.coordinates import get_body, name_resolve
 from datetime import datetime
 from timezonefinder import TimezoneFinder
 import pytz
@@ -46,6 +46,9 @@ def get_object_icrs(time, location, object):
             RADe_object = RADe_object.icrs
     else:
         # A celestial object in ICRS outside the solar system
+        # Check if astropy rasies an error
+        if (name_resolve(object)._parse_response() == None):
+            return None, False
         RADe_object = SkyCoord.from_name(object)
     no_interp = RADe_object.transform_to(altaz)  
     az = no_interp.az.deg
@@ -69,6 +72,11 @@ def run_analysis(object,location):
      # Observation time. Convert to Astropy format
     download_type = 'gif' # Or 'fits'
     RADe_object, in_sky = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
+    if RADe_object is None:
+        RA = None
+        DE = None
+        dest_path = os.path.join('Astro-Website/IMAGES', 'not_found.jpg')
+        return RA, DE, dest_path, in_sky
     RA_deg = RADe_object.ra.deg
     DE_deg = RADe_object.dec.deg
 
