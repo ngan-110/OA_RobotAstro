@@ -1,11 +1,14 @@
 TRAPPIST-1b
+Atlas
 Styx
 Nix
 Kerberos
 Hydra
 Charon
+Io
 Ganymede
-Francisco
+Europa
+Callisto
 Pluto
 NGC 346
 NGC 628
