@@ -9,6 +9,18 @@ html {
     background-attachment: fixed;
 }
 
+.background-shape { /* INSTANTIATION OF BACKGROUND GREY RECTANGE */
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    width: calc(100% - 100px);
+    min-height: 635px;
+    height: calc(100vh - 100px);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    z-index: -1;
+}
+
 /* CENTERING TITLE PAGE HEADERS */
 .heading-container {
     color: white;
@@ -17,28 +29,59 @@ html {
     justify-content: flex-start;
     align-items: flex-start;
     margin-left: 25px;
+    margin-top: 20px;
 } .title {
     font-family: Odibee Sans;
-    font-size:calc(5px + 5.5vw);
+    font-size: calc(37px + 1vw);
     margin-bottom: 0;
     text-decoration: underline;
 } .subtitle {
     font-family: Odibee Sans;
-    font-size:calc(8px + 1.5vw);
-    margin-top: 2;
-} .content-container {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    padding-top: 10vw;
-    margin-top: -10vw;
-    margin-bottom: 50px;
-} .the-blurb-itself {
+    font-size: calc(8px + 1.5vw);
+    margin-top: 2px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center; /* centers the grid items horizontally */
+    margin-top: calc(95px - 7vw);
+} 
+.image-grid-item {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    background-color: #b1b1b1;
+    align-items: center;
+    border-radius: 6px;
+    border: whitesmoke inset 3px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-bottom: calc(40px - 0.7vw);
+    width: calc(100% - 140px);
+    height: calc(100px + 2vw);
+} 
+
+.image-grid-item img {
+    width: calc(95px + 4vw);
+    margin-right: 10px;
+    height: auto;
+    border-radius: 6px;
+    border: clamp(2.2px, 0.3vw, 3.5px) solid whitesmoke;
+} 
+.image-grid-item p {
     font-family: Space Mono;
-    text-indent: 2em;
-    font-size: 1.4vw;
     word-spacing: -1px;
-    line-height: 1;
+    line-height: 1.4em;
+    margin-top: 10px;
+    font-size: clamp(7px, 1.8vw, 16px);
+}
+
+a:hover {
+    color: #fd3d3d !important;
+    font-size: 1.015em;
+    transition: font-size 0.15s ease-in-out;
+} a:visited {
+    color: #00ae00 !important;
 }
