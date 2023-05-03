@@ -20,7 +20,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 
 # Define constants
-final_objects = 'data/final_objects.txt'
+final_objects = 'Astro-Website/DATA/final_objects.txt'
 obj_1_template = 'Astro-Website/PAGES/template/object-1-page.html'
 obj_2_template = 'Astro-Website/PAGES/template/object-2-page.html'
 obj_3_template = 'Astro-Website/PAGES/template/object-3-page.html'

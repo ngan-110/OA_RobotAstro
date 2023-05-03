@@ -37,9 +37,9 @@ def read_links(filename):
         links = [line.strip() for line in l]
         return links
 
-words = read_file_word('data/popular_topics.txt')
-headlines = read_file('data/headlines.txt')
-links = read_links('data/links.txt')
+words = read_file_word('Astro-Website/DATA/popular_topics.txt')
+headlines = read_file('Astro-Website/DATA/headlines.txt')
+links = read_links('Astro-Website/DATA/links.txt')
 
 # Returns nouns from string
 def return_noun(line):
@@ -76,10 +76,10 @@ def get_links(popular_headlines, headlines, links):
 
 def make_word_lists():
     # Read the NGC Excel file into a dataframe
-    df1 = pd.read_excel('data/NGC.xlsx', sheet_name='NGC')
+    df1 = pd.read_excel('Astro-Website/DATA/NGC.xlsx', sheet_name='NGC')
 
     # Read the Messier Excel file into a dataframe
-    df2 = pd.read_excel('data/mesr-mas.xls', sheet_name='Messier Objects', skiprows = 8, nrows=110, usecols=range(2))
+    df2 = pd.read_excel('Astro-Website/DATA/mesr-mas.xls', sheet_name='Messier Objects', skiprows = 8, nrows=110, usecols=range(2))
 
     # Create lists for each Messier and NGC objects
     messier1 = df2.iloc[:,0].tolist()
@@ -183,7 +183,7 @@ def run_back_search():
     summary_list = summarize_artciles(list_links)
     object_ls = object_list(total_list, summary_list)
     # Print to new file called 'popular topics'
-    with open('data/final_objects.txt', 'w') as f:
+    with open('Astro-Website/DATA/final_objects.txt', 'w') as f:
         for items in reversed(object_ls):
             f.write(items+ '\n')
     f.close

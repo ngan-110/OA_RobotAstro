@@ -130,11 +130,11 @@ attention and resources on the most promising objects.\\
                 \item[$\cdot$] Create 40\% sized summaries of each article 
                 \item[$\cdot$] Filter through summaries with a large 
                   list of object names accumulated from multiple databases
-                \item[$\cdot$] Create list of final object names \texttt{final\_objects.ipynb}
+                \item[$\cdot$] Create list of final object names \texttt{data\final\_objects.txt}
             \end{enumerate}
         \end{enumerate}
     \item Stage 4: Search top topics in databases to find more information 
-    about the objects and the coordinates: \texttt{object\_retrieve.ipynb}:
+    about the objects, the coordinates and populate to html: \texttt{popular-object-to-html.py}:
         \begin{enumerate}
             \item [$-$] Reverse search using keywords on websites
             \item [$-$] Get exact objects names
@@ -160,6 +160,19 @@ attention and resources on the most promising objects.\\
 \end{enumerate}
 
 \subsection*{How the Program Runs}
+
+Run \texttt{pip install -r requirements.txt} to install all the necessary packages.\\
+
+Structures:
+\begin{enumerate}
+  \item [$-$] COMPONENTS: All python scripts
+  \item [$-$] DATA: All data files
+  \item [$-$] IMAGES: Where all images used for websites and images downloaded from stsci database are stored
+  \item [$-$] PAGES: All html files
+  \item [$-$] SCRIPTS: All javascript files
+  \item [$-$] STYLES: All css files
+  \item [$-$] UNIVERSAL: All common header and footer across all pages
+\end{enumerate}
 This section will describe the steps of how to run the program. We  decided that 
 creating a \texttt{main.py} file that can be run each day and runs the files from 
 each of the sections described above would be the best option to make this program 

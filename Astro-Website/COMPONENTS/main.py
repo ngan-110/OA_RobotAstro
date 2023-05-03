@@ -21,8 +21,8 @@ def main():
     args = parser.parse_args()
     
     print('Running website scrapping...')
-    print(os.path.getsize('data/headlines.txt'))
-    while os.path.getsize('data/headlines.txt') == 0:
+    print(os.path.getsize('Astro-Website/DATA/headlines.txt'))
+    while os.path.getsize('Astro-Website/DATA/headlines.txt') == 0:
         website_scrapping.run_sites()
     
     print('Running keyword processing...')

@@ -58,11 +58,11 @@ def popular_topics(filename):
 
 # Print to new file called 'popular topics'
 def run_keywords():
-    with open('data/popular_topics.txt', 'w') as f:
-        t = popular_topics('data/headlines.txt')
+    with open('Astro-Website/DATA/popular_topics.txt', 'w') as f:
+        t = popular_topics('Astro-Website/DATA/headlines.txt')
         for items in t:
             f.write(items[0]+ '\n')
     f.close
     print('Done running keyword processing...')
-    print('Popular topics saved to data/popular_topics.txt')
+    print('Popular topics saved to Astro-Website/DATA/popular_topics.txt')
 

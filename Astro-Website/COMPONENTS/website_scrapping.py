@@ -143,7 +143,7 @@ def site_4(urls_h3,f,l, ignore):
             l.write('\n')
 
 def run_sites():
-    with open('data/sources.txt') as s:
+    with open('Astro-Website/DATA/sources.txt') as s:
         for line in s:
             urls = [elt.strip() for elt in line.split(',')]
             # in alternative, if you need to use the file content as numbers
@@ -154,8 +154,8 @@ def run_sites():
             'About Nature Portfolio', 'Discover content','Publishing policies', 'Author & Researcher services', 'Libraries & institutions',
             'Advertising & partnerships', 'Career development', 'Regional websites', 'More news','Other news','Medical Xpress','Tech Xplore',
             'Science X','Science X Account']
-    f = open('data/headlines.txt', 'w')
-    l = open('data/links.txt', 'w')
+    f = open('Astro-Website/DATA/headlines.txt', 'w')
+    l = open('Astro-Website/DATA/links.txt', 'w')
     site_1(urls,f,l)
     site_2(urls,f,l,ignore)
     site_3(urls,f,l,ignore)
