@@ -142,8 +142,7 @@ def update_obj_html():
     if os.path.exists(obj_1_page):
         os.remove(obj_1_page)
     # Copy the template to the object page
-    os.system('cp ' + obj_1_template + ' ' + obj_1_page)
-    print('copy ' + obj_1_template + ' ' + obj_1_page)
+    os.system('copy ' + obj_1_template + ' ' + obj_1_page)
     if os.path.exists(obj_2_page):
         os.remove(obj_2_page) 
     os.system('copy ' + obj_2_template + ' ' + obj_2_page)  
