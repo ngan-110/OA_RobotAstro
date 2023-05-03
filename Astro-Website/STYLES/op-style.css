@@ -160,10 +160,10 @@ html {
     transform: translate(-50%, -50%);
     transition: all 0.5s ease-out;
   } #telescope-image-container img {
-      width: calc(-15px + 31.5vw);
-      height: calc(-15px + 31.5vw);
-      height: auto;
-      border: clamp(4px, 0.3vw, 7px) solid whitesmoke;
-      border-radius: 2px;
+    width: calc(-15px + 31.5vw);
+    height: calc(-15px + 31.5vw);
+    height: auto;
+    border: clamp(4px, 0.3vw, 7px) solid whitesmoke;
+    border-radius: 2px;
   }
 }
