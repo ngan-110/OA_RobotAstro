@@ -2,9 +2,7 @@
 
 # import the required modules
 import os
-import sys
 import argparse
-sys.path.append('/Users/rhessa/OA_RobotAstro/Astro-Website')
 
 # import the components
 import website_scrapping
@@ -20,10 +18,8 @@ def main():
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
     
-    print('Running website scrapping...')
-    print(os.path.getsize('Astro-Website/DATA/headlines.txt'))
-    while os.path.getsize('Astro-Website/DATA/headlines.txt') == 0:
-        website_scrapping.run_sites()
+    print('RUNNING WEBSITE SCRAPPING...')
+    website_scrapping.run_sites()
     
     print('Running keyword processing...')
     keyword_processing.run_keywords()

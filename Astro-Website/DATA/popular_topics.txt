@@ -1,10 +1,10 @@
-hole
 planet
-mars
-waves
 star
-image
+moon
+gas
 life
-photo
+hole
 radio
-stars
+return
+mission
+universe
