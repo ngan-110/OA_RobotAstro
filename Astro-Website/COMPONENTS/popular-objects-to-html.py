@@ -1,3 +1,10 @@
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import json
+from urllib.request import urlopen
+import os
+from object_retrieve import run_analysis
+
 popular_topics = 'data/popular_topics.txt'
 obj_1_template = 'Astro-Website/PAGES/template/object-1-page.html'
 obj_2_template = 'Astro-Website/PAGES/template/object-2-page.html'
@@ -8,19 +15,6 @@ obj_3_page = 'Astro-Website/PAGES/object-3-page.html'
 OBJ_1 = '[[[OBJECT-1]]]'
 OBJ_2 = '[[[OBJECT-2]]]'
 OBJ_3 = '[[[OBJECT-3]]]'
-
-import os
-
-# Remove the old object pages and replace them with the templates
-if os.path.exists(obj_1_page):
-    os.remove(obj_1_page)
-    os.system('cp ' + obj_1_template + ' ' + obj_1_page)
-if os.path.exists(obj_2_page):
-    os.remove(obj_2_page) 
-    os.system('cp ' + obj_2_template + ' ' + obj_2_page)  
-if os.path.exists(obj_3_page):
-    os.remove(obj_3_page)
-    os.system('cp ' + obj_3_template + ' ' + obj_3_page)
 
 def generate_obj_list(popular_topics):
     with open(popular_topics,'r',encoding='utf-8') as pop_topics_file:
@@ -35,85 +29,83 @@ def generate_obj_list(popular_topics):
                 break
     return object_list
 
-object_list = generate_obj_list(popular_topics)
+def update_obj_html():  
+    # Remove the old object pages and replace them with the templates
+    if os.path.exists(obj_1_page):
+        os.remove(obj_1_page)
+        os.system('cp ' + obj_1_template + ' ' + obj_1_page)
+    if os.path.exists(obj_2_page):
+        os.remove(obj_2_page) 
+        os.system('cp ' + obj_2_template + ' ' + obj_2_page)  
+    if os.path.exists(obj_3_page):
+        os.remove(obj_3_page)
+        os.system('cp ' + obj_3_template + ' ' + obj_3_page)
+    # Generate the object list
+    object_list = generate_obj_list(popular_topics)
+    # TODO: Rewrite into functions
+    # MODIFYING OBJECT-1-PAGE...
+    with open(obj_1_page,'r',encoding='utf-8') as obj1_file:
+        new_content = obj1_file.read()
+    modified_object_1_page = new_content.replace(OBJ_1,object_list[0].upper())
+    with open(obj_1_page,'w',encoding='utf-8') as file:
+        file.write(modified_object_1_page)
 
+    # MODIFYING OBJECT-2-PAGE...
+    with open(obj_2_page,'r',encoding='utf-8') as obj2_file:
+        new_content = obj2_file.read()
+    modified_object_2_page = new_content.replace(OBJ_1,object_list[0].upper())
+    modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1].upper())
+    with open(obj_2_page,'w',encoding='utf-8') as file:
+        file.write(modified_object_2_page)
 
-# TODO: Rewrite into functions
-# MODIFYING OBJECT-1-PAGE...
-with open(obj_1_page,'r',encoding='utf-8') as obj1_file:
-    new_content = obj1_file.read()
-modified_object_1_page = new_content.replace(OBJ_1,object_list[0].upper())
-with open(obj_1_page,'w',encoding='utf-8') as file:
-    file.write(modified_object_1_page)
+    # MODIFYING OBJECT-3-PAGE...
+    with open(obj_3_page,'r',encoding='utf-8') as obj3_file:
+        new_content = obj3_file.read()
+    modified_object_3_page = new_content.replace(OBJ_1,object_list[0].upper())
+    modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2].upper())
+    with open(obj_3_page,'w',encoding='utf-8') as file:
+        file.write(modified_object_3_page)
+        
+    # Print complete messages
+    print('UPDATED OBJECT HTMLS')
+    print('Object list:', object_list)    
 
+    #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    urlopen("https://ipinfo.io/json")
+    data = json.load(urlopen("https://ipinfo.io/json"))
+    latitude = float(data['loc'].split(',')[0])
+    latitude =  float("{:.2f}".format(latitude))
+    longitude = float(data['loc'].split(',')[1])
+    longitude = float("{:.2f}".format(longitude))
+    location = [latitude, longitude]
 
-# MODIFYING OBJECT-2-PAGE...
-with open(obj_2_page,'r',encoding='utf-8') as obj2_file:
-    new_content = obj2_file.read()
-modified_object_2_page = new_content.replace(OBJ_1,object_list[0].upper())
-modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1].upper())
-with open(obj_2_page,'w',encoding='utf-8') as file:
-    file.write(modified_object_2_page)
+    # TO UPDATE EACH OF THE OBJECT HTMLS WITH LOCATION INFORMATION #
+    for i in range(len(object_list)):
+        # TODO: MAKE A COPY OF BELOW STUFF!!!
+        file_name = 'Astro-Website/PAGES/object-' + str(i+1) + '-page.html'
+        IN_SKY_ref = '[[[IN-SKY-' + str(i+1) + ']]]'
+        RA_ref = '[[[RA-' + str(i+1) + ']]]'
+        DEC_ref = '[[[DEC-' + str(i+1) + ']]]'
+        IMAGE_ref = '[[[IMAGE-' + str(i+1) + ']]]'
+        
+        RA, DEC, IMAGE_path, in_sky = run_analysis(object_list[i],location)
 
+        if in_sky == True:
+            statement = "THIS OBJECT IS UP IN YOUR SKY!"
+        else:
+            statement = "THIS OBJECT IS BELOW YOUR HORIZON"
+        in_sky_statement = "YOUR LAT: " + str(latitude) + " YOUR LONG: " + str(longitude) + " ... <b>" + statement + "</b>"
 
-# MODIFYING OBJECT-3-PAGE...
-with open(obj_3_page,'r',encoding='utf-8') as obj3_file:
-    new_content = obj3_file.read()
-modified_object_3_page = new_content.replace(OBJ_1,object_list[0].upper())
-modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2].upper())
-with open(obj_3_page,'w',encoding='utf-8') as file:
-    file.write(modified_object_3_page)
+        # Updating object htmls with location information + images #
+        with open(file_name,'r',encoding='utf-8') as file:
+            content = file.read()
+        modified_file = content.replace(RA_ref,RA)
+        modified_file = modified_file.replace(DEC_ref,DEC)
+        modified_file = modified_file.replace(IN_SKY_ref,in_sky_statement)
 
+        modified_file = modified_file.replace(IMAGE_ref,IMAGE_path)
 
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-import json
-
-from urllib.request import urlopen
-
-urlopen("https://ipinfo.io/json")
-
-data = json.load(urlopen("https://ipinfo.io/json"))
-
-latitude = float(data['loc'].split(',')[0])
-latitude =  float("{:.2f}".format(latitude))
-longitude = float(data['loc'].split(',')[1])
-longitude = float("{:.2f}".format(longitude))
-
-location = [latitude, longitude]
-
-object_list = ['M3','M87','mars']
-
-
-# TO UPDATE EACH OF THE OBJECT HTMLS WITH LOCATION INFORMATION #
-
-from object_retrieve import run_analysis
-
-for i in range(len(object_list)):
-    # TODO: MAKE A COPY OF BELOW STUFF!!!
-    file_name = 'Astro-Website/PAGES/object-' + str(i+1) + '-page.html'
-    IN_SKY_ref = '[[[IN-SKY-' + str(i+1) + ']]]'
-    RA_ref = '[[[RA-' + str(i+1) + ']]]'
-    DEC_ref = '[[[DEC-' + str(i+1) + ']]]'
-    IMAGE_ref = '[[[IMAGE-' + str(i+1) + ']]]'
-    
-    RA, DEC, IMAGE_path, in_sky = run_analysis(object_list[i],location)
-
-    if in_sky == True:
-        statement = "THIS OBJECT IS UP IN YOUR SKY!"
-    else:
-        statement = "THIS OBJECT IS BELOW YOUR HORIZON"
-    in_sky_statement = "YOUR LAT: " + str(latitude) + " YOUR LONG: " + str(longitude) + " ... <b>" + statement + "</b>"
-
-    # Updating object htmls with location information + images #
-    with open(file_name,'r',encoding='utf-8') as file:
-        content = file.read()
-    modified_file = content.replace(RA_ref,RA)
-    modified_file = modified_file.replace(DEC_ref,DEC)
-    modified_file = modified_file.replace(IN_SKY_ref,in_sky_statement)
-
-    modified_file = modified_file.replace(IMAGE_ref,IMAGE_path)
-
-    with open(file_name,'w',encoding='utf-8') as file:
-        file.write(modified_file)
+        with open(file_name,'w',encoding='utf-8') as file:
+            file.write(modified_file)
+        print('UPDATED OBJECT-' + str(i+1) + '-PAGE.HTML')
+        print('Object:', object_list[i])
