@@ -34,8 +34,9 @@ def main():
     headline_to_html.update_headline_html()
 
     print('OPENING WEBSITE...')
-    website = 'Astro-Website/PAGES/object-1-page.html'
-    webbrowser.get('chrome').open(website)
+    chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
+    website = 'Astro-Website/PAGES/title-page.html'
+    webbrowser.get(chrome_path).open_new(website)
 
 if __name__ == '__main__':
     main()
