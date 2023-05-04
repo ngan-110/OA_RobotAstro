@@ -33,5 +33,7 @@ def main():
     print('Populate headlines to html...')
     headline_to_html.update_headline_html()
 
+    
+
 if __name__ == '__main__':
     main()
