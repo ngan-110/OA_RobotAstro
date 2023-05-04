@@ -3,7 +3,6 @@
 # import the required modules
 import os
 import argparse
-
 # import the components
 import website_scrapping
 import keyword_processing

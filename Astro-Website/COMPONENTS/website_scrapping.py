@@ -6,6 +6,10 @@ import re
 SOURCES = 'Astro-Website/DATA/sources.txt'
 HEADLINES = 'Astro-Website/DATA/headlines.txt'
 LINKS = 'Astro-Website/DATA/links.txt'
+ignore = ['Subscribe or renew today', 'Most Popular', 'Subscriber Services', 'More Information', 'Society for Science', 'Quick links', 
+            'About Nature Portfolio', 'Discover content','Publishing policies', 'Author & Researcher services', 'Libraries & institutions',
+            'Advertising & partnerships', 'Career development', 'Regional websites', 'More news','Other news','Medical Xpress','Tech Xplore',
+            'Science X','Science X Account']
 
 #Site 1
 def site_1(urls_h3,f,l):
@@ -151,15 +155,16 @@ def run_sites():
         for line in s:
             urls = [elt.strip() for elt in line.split(',')]
     ## Ignores website specific non-headlines
-    ignore = ['Subscribe or renew today', 'Most Popular', 'Subscriber Services', 'More Information', 'Society for Science', 'Quick links', 
-            'About Nature Portfolio', 'Discover content','Publishing policies', 'Author & Researcher services', 'Libraries & institutions',
-            'Advertising & partnerships', 'Career development', 'Regional websites', 'More news','Other news','Medical Xpress','Tech Xplore',
-            'Science X','Science X Account']
     f = open(HEADLINES, 'w', encoding="utf-8")
     l = open(LINKS, 'w', encoding="utf-8")
     site_1(urls,f,l)
+    print ('Finished scraping source 1', urls[0])
     site_2(urls,f,l,ignore)
+    print ('Finished scraping source 2', urls[1])
     site_3(urls,f,l,ignore)
+    print ('Finished scraping source 3', urls[2])
     site_4(urls,f,l,ignore)
+    print ('Finished scraping source 4', urls[3])
+    print ('Headlines and links saved to', HEADLINES, 'and', LINKS)
 
 

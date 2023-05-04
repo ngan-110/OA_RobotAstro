@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 planet
 star
 moon
 gas
-mars
 life
 hole
 radio

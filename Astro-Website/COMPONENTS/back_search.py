@@ -15,7 +15,7 @@ HEADLINES = 'Astro-Website/DATA/headlines.txt'
 LINKS = 'Astro-Website/DATA/links.txt'
 NGC_OBJECTS = 'Astro-Website/DATA/NGC.xlsx'
 MESSIER_OBJECTS = 'Astro-Website/DATA/mesr-mas.xls'
-DAWRF_PLANETS = 'Astro-Website/DATA/dwarf_planets.txt'
+DWARF_PLANETS = 'Astro-Website/DATA/dwarf_planets.txt'
 MARS_MOONS = 'Astro-Website/DATA/mars_moons.txt'
 JUPITER_MOONS = 'Astro-Website/DATA/jupiter_moons.txt'
 SATURN_MOONS = 'Astro-Website/DATA/saturn_moons.txt'
@@ -24,8 +24,13 @@ NEPTUNE_MOONS = 'Astro-Website/DATA/neptune_moons.txt'
 PLUTO_MOONS = 'Astro-Website/DATA/pluto_moons.txt'
 EXOPLANETS = 'Astro-Website/DATA/exoplanets.txt'
 
-# Reads headlines.txt file into list 
+ 
 def read_file(filename):
+    '''
+    Reads headlines.txt file into list
+    input: filename, string
+    return: array list of headlines, list
+    '''
     # Check if file exists
     if not os.path.exists(filename):
         # If not, create file
@@ -42,9 +47,13 @@ def read_file(filename):
             if line:
                 headlines.append(line)
         return headlines
-    
-# Reads a file and returns list
+
 def read_file_word(filename):
+    '''
+    Read .txt file into list
+    input: filename, string
+    return: list of words, list
+    '''
     # Check if file exists
     if not os.path.exists(filename):
         # If not, create file
@@ -53,21 +62,27 @@ def read_file_word(filename):
     with open(filename, 'r') as f:
         each_line = f.read().split()
         return each_line
-
-# Read links file into list    
-def read_links(filename):
+   
+def read_lines(filename):
+    '''
+    Read lines from .txt file into list
+    input: filename, string
+    return: list of links, list
+    '''
     # Check if file exists
     if not os.path.exists(filename):
         # If not, create file
         with open(filename, 'w') as f:
             f.write('')
     with open(filename, 'r') as l:
-        links = [line.strip() for line in l]
-        return links
+        lines = [line.strip() for line in l]
+        return lines
 
-
-# Returns nouns from string
 def return_noun(line):
+    '''Return nouns from string
+    input: line, string
+    return: nouns, list
+    '''
     # function to test if something is a noun
     is_noun = lambda pos: pos[:2] == 'NN'
     # do the nlp stuff
@@ -75,8 +90,14 @@ def return_noun(line):
     nouns = [word for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
     return nouns
 
-# Gets the headlines that have the top words
+
 def get_headlines(words, headlines):
+    '''
+    Gets the headlines that have the top words
+    input: words, list
+           headlines, list
+    return: popular_headlines, list
+    '''
     popular_headlines = []
     for word in words:
         for headline in headlines:
@@ -86,8 +107,15 @@ def get_headlines(words, headlines):
                 continue
     return popular_headlines
 
-# Find link for given headline and add it to list_links with headline
+
 def get_links(popular_headlines, headlines, links):
+    '''
+    Find link for given headline and add it to list_links with headline
+    input: popular_headlines, list
+           headlines, list
+           links, list
+    return: list_links, list
+    '''
     list_links = []
     for x in popular_headlines:
         if x in headlines:
@@ -100,6 +128,11 @@ def get_links(popular_headlines, headlines, links):
 
 
 def make_word_lists():
+    '''
+    Make list of celestial objects
+    input: none
+    return: list of celestial objects, list
+    '''
     # Read the NGC Excel file into a dataframe
     df1 = pd.read_excel(NGC_OBJECTS, sheet_name='NGC')
 
@@ -117,22 +150,25 @@ def make_word_lists():
     # Convert to string plus catalog identifier
     messier = ['M' + str(element) for element in messier1]
     NGC = ['NGC ' + str(element).rstrip('.0') for element in NGC_str]
-    d_planets = read_file_word(DAWRF_PLANETS)
-    mars_moons = read_file_word(MARS_MOONS)
-    jupiter_moons = read_file_word(JUPITER_MOONS)
-    saturn_moons = read_file_word(SATURN_MOONS)
-    uranus_moons = read_file_word(URANUS_MOONS)
-    neptune_moons = read_file_word(NEPTUNE_MOONS)
-    pluto_moons = read_file_word(PLUTO_MOONS)
-    exoplanets = read_file_word(EXOPLANETS)
+    d_planets = read_lines(DWARF_PLANETS)
+    mars_moons = read_lines(MARS_MOONS)
+    jupiter_moons = read_lines(JUPITER_MOONS)
+    saturn_moons = read_lines(SATURN_MOONS)
+    uranus_moons = read_lines(URANUS_MOONS)
+    neptune_moons = read_lines(NEPTUNE_MOONS)
+    pluto_moons = read_lines(PLUTO_MOONS)
+    exoplanets = read_lines(EXOPLANETS)
 
     # Create one total list
     total_list = messier+NGC+d_planets+mars_moons+uranus_moons+jupiter_moons+neptune_moons+pluto_moons+saturn_moons+exoplanets
     return total_list
 
-
-#Summarizes content from links (1m 10s)
 def summarize_artciles(list_links):
+    '''
+    Summarize articles from list of links
+    input: list_links, list
+    return: summary_list, list
+    '''
     summary_list = []
     # Loop through each link
     for link in list_links:
@@ -158,8 +194,13 @@ def summarize_artciles(list_links):
     return summary_list
 
 
-# Compare each summary to the list of Messier objects
 def object_list(total_list, summary_list):
+    '''
+    Compare each summary to the list of celestial objects
+    input: total_list, list
+           summary_list, list
+    return: object_ls, list
+    '''
     object_ls = []
     for object_name in total_list:
         for summary1 in summary_list:
@@ -176,7 +217,7 @@ def object_list(total_list, summary_list):
 def run_back_search():
     words = read_file_word(POPULAR_TOPICS)
     headlines = read_file(HEADLINES)
-    links = read_links(LINKS)
+    links = read_lines(LINKS)
     popular_headlines = get_headlines(words, headlines)
     list_links = get_links(popular_headlines, headlines, links)
     total_list = make_word_lists()
@@ -187,5 +228,5 @@ def run_back_search():
         for items in reversed(object_ls):
             f.write(items+ '\n')
     f.close
-    print('Check the file "list_objects.txt" for the results!')
+    print('Check "Astro-Website\DATA\list_objects.txt" for exact names of 10 most mentioned objects')
 

@@ -4,6 +4,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 import json
 from urllib.request import urlopen
 import os
+import requests
+import shutil
 import astropy
 from astropy.time import Time
 from astropy.coordinates import solar_system_ephemeris, SkyCoord, EarthLocation, AltAz
@@ -19,13 +21,13 @@ from selenium.webdriver.common.keys import Keys
 
 
 # Define constants
-final_objects = 'Astro-Website/DATA/list_objects.txt'
-obj_1_template = 'Astro-Website/PAGES/TEMPLATES/object-1-page.html'
-obj_2_template = 'Astro-Website/PAGES/TEMPLATES/object-2-page.html'
-obj_3_template = 'Astro-Website/PAGES/TEMPLATES/object-3-page.html'
-obj_1_page = 'Astro-Website/PAGES/object-1-page.html'
-obj_2_page = 'Astro-Website/PAGES/object-2-page.html'
-obj_3_page = 'Astro-Website/PAGES/object-3-page.html'
+LIST_OBJECTS = 'Astro-Website\DATA\list_objects.txt'
+obj_1_template = 'Astro-Website\PAGES\TEMPLATES\object-1-page.html'
+obj_2_template = 'Astro-Website\PAGES\TEMPLATES\object-2-page.html'
+obj_3_template = 'Astro-Website\PAGES\TEMPLATES\object-3-page.html'
+obj_1_page = 'Astro-Website\PAGES\object-1-page.html'
+obj_2_page = 'Astro-Website\PAGES\object-2-page.html'
+obj_3_page = 'Astro-Website\PAGES\object-3-page.html'
 OBJ_1 = "[[[OBJECT-1]]]"
 OBJ_2 = "[[[OBJECT-2]]]"
 OBJ_3 = "[[[OBJECT-3]]]"
@@ -33,10 +35,22 @@ data_source = "https://archive.stsci.edu/cgi-bin/dss_form"
 SolarSystemBodies = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
 
 
-def get_object_icrs(time, location, object):
+def get_object_icrs(time, observer_location, object):
+    '''
+    Get the RA and Dec of an object in ICRS coordinates
+    input:
+        time: Astropy time object, ex: 2023-05-04 01:01:15.124348
+        location: Tuple of latitude and longitude of observer, ex: [40.73, -74.01]
+        object: Name of object, string
+    return:
+        RADe_object: Astropy SkyCoord object of object in ICRS coordinates
+            ex: <SkyCoord (ICRS): (ra, dec) in deg
+                    (57.2905941, 24.05341674)>
+        in_sky: Boolean, True if object is above horizon, False if below
+    '''
     # Convert to lower case
     object = object.lower()
-    location = EarthLocation (lat=location[0],lon=location[1])
+    location = EarthLocation (lat=observer_location[0],lon=observer_location[1])
     altaz = AltAz(obstime=time, location=location)
     if object in SolarSystemBodies:
         # Get the RA and Dec of the object if in solar system
@@ -62,19 +76,40 @@ def get_object_icrs(time, location, object):
     else:
         in_sky = False
     return RADe_object, in_sky
-def get_time(location):
-    tz_name = TimezoneFinder().timezone_at(lng=location[1],lat=location[0])
+
+def get_time(observer_location):
+    '''
+    Get the time at the observatory
+    input:
+        observer_location: Tuple of latitude and longitude of observer, ex: [40.73, -74.01]
+    return:
+        time: Astropy time object, ex: 2023-05-04 01:01:15.124348
+    '''
+    tz_name = TimezoneFinder().timezone_at(lng=observer_location[1],lat=observer_location[0])
     tz = pytz.timezone(tz_name)
     # Get time at observatory
     now = datetime.now(tz)
     time = Time(now)
     return time
 
-def run_analysis(object,location):
-    time = get_time(location)
+def run_analysis(object, observer_location):
+    '''
+    Get object RA, DE, get image of object, if object is in sky
+    input:
+        object: Name of object, string
+        observer_location: Tuple of latitude and longitude of observer
+    return:
+        RA: Right ascension of object, string, ex: 3.0h 49.0m 9.74s
+        DE: Declination of object, string, ex: +24.0d 3.0m 12.30s
+        dest_path: Path to image of object, string, ex: ../IMAGES\Atlas.gif
+        in_sky: Boolean, True if object is in sky, False if not    
+    '''
+    time = get_time(observer_location)
      # Observation time. Convert to Astropy format
     download_type = 'gif' # Or 'fits'
-    RADe_object, in_sky = get_object_icrs(time, location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
+    # Get RA and Dec of object and check if it's viewable at observer's location
+    RADe_object, in_sky = get_object_icrs(time, observer_location, object) # Or 'sun' if looking in solar system but sky survey cant retrieve solar system image
+    # If object is not in CDS database, return None
     if RADe_object is None:
         RA = 'None'
         DE = 'None'
@@ -84,20 +119,16 @@ def run_analysis(object,location):
     DE_deg = RADe_object.dec.deg
 
     RA = RADe_object.ra.hms
-    hours, minutes, seconds = RA
-    RA = "{}h {}m {:.2f}s".format(hours, minutes, seconds)
     DE = RADe_object.dec.dms
-    degrees, minutes, seconds = DE
-    # DO I NEED TO HAVE A '+' IN FRONT OF DE?
-    if degrees >= 0:
-        DE = "+{}d {}m {:.2f}s".format(degrees, minutes, seconds)
-    else:
-        DE = "{}d {}m {:.2f}s".format(degrees, minutes, seconds)
+    ra_hours, ra_minutes, ra_seconds = RA
+    de_degrees, de_minutes, de_seconds = DE
+    RA = "{}h {}m {:.2f}s".format(ra_hours, ra_minutes, ra_seconds)
+    DE = "+{}d {}m {:.2f}s".format(de_degrees, de_minutes, de_seconds)
 
+    # If object is in Solar system, use predownloaded images of solar system bodies
     if object in SolarSystemBodies:
         dest_path = os.path.join('Astro-Website/IMAGES', object + '.jpg')
-        #dest_path = '../IMAGES/' + object + '.jpg'
-      
+    # If object is not in Solar system, download image from sky survey
     else:  
         # Automating locate elements for data retrieving
         browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -118,14 +149,10 @@ def run_analysis(object,location):
         image_url = image.get_attribute('src')
 
         # Downloading an image itself
-        import requests
         response = requests.get(image_url)
         image_file_name = str(object) + '.gif'
-
         with open(image_file_name, 'wb') as f:
             f.write(response.content)
-        import shutil
-
         # Define the source and destination paths
         src_path = image_file_name
         dest_path = os.path.join('../IMAGES', image_file_name)
@@ -133,11 +160,15 @@ def run_analysis(object,location):
 
         # Move the file to the destination directory
         shutil.move(src_path, sys_dest_path)
-
     return RA, DE, dest_path, in_sky
 
-def generate_obj_list(objects):
-    with open(objects,'r') as pop_topics_file:
+def generate_obj_list(filename):
+    '''
+    Generates a list of the most popular objects from file
+    input: file name, string
+    output: list of objects, list
+    '''
+    with open(filename,'r') as pop_topics_file:
         object_list = []
         counter = 0
         for line in pop_topics_file:
@@ -149,43 +180,44 @@ def generate_obj_list(objects):
                 break
     return object_list
 
+def modify_object_page (object, object_page, current_object, top_object):
+    '''
+    Modify object page with object info
+    input: object, string
+           object_page, string
+           current_object, string
+           top_object, string
+    output: None
+    '''
+    with open(object_page,'r', encoding='utf-8') as obj_file:
+        new_content = obj_file.read()
+    modified_object_page = new_content.replace(OBJ_1,top_object.upper())
+    if (object_page != obj_1_page):
+        modified_object_page = modified_object_page.replace(current_object,object.upper())
+    with open(object_page,'w', encoding='utf-8') as file:
+        file.write(modified_object_page)
+
 def update_obj_html():  
-    # Remove the old object pages and replace them with the templates
+    # Remove the old object pages 
     if os.path.exists(obj_1_page):
         os.remove(obj_1_page)
-    # Copy the template to the object page
-    os.system('cp ' + obj_1_template + ' ' + obj_1_page)
     if os.path.exists(obj_2_page):
         os.remove(obj_2_page) 
-    os.system('cp ' + obj_2_template + ' ' + obj_2_page)  
     if os.path.exists(obj_3_page):
         os.remove(obj_3_page)
-    os.system('cp ' + obj_3_template + ' ' + obj_3_page)
+    # Copy the template to the object page
+    os.system('copy ' + obj_1_template + ' ' + obj_1_page)
+    os.system('copy ' + obj_2_template + ' ' + obj_2_page)  
+    os.system('copy ' + obj_3_template + ' ' + obj_3_page)
     # Generate the object list
-    object_list = generate_obj_list(final_objects)
+    object_list = generate_obj_list(LIST_OBJECTS)
     # TODO: Rewrite into functions
     # MODIFYING OBJECT-1-PAGE...
-    with open(obj_1_page,'r', encoding='utf-8') as obj1_file:
-        new_content = obj1_file.read()
-    modified_object_1_page = new_content.replace(OBJ_1,object_list[0].upper())
-    with open(obj_1_page,'w', encoding='utf-8') as file:
-        file.write(modified_object_1_page)
-
+    modify_object_page(object_list[0], obj_1_page, OBJ_1, object_list[0])
     # MODIFYING OBJECT-2-PAGE...
-    with open(obj_2_page,'r', encoding='utf-8') as obj2_file:
-        new_content = obj2_file.read()
-    modified_object_2_page = new_content.replace(OBJ_1,object_list[0].upper())
-    modified_object_2_page = modified_object_2_page.replace(OBJ_2,object_list[1].upper())
-    with open(obj_2_page,'w', encoding='utf-8') as file:
-        file.write(modified_object_2_page)
-
+    modify_object_page(object_list[1], obj_2_page, OBJ_2, object_list[0])
     # MODIFYING OBJECT-3-PAGE...
-    with open(obj_3_page,'r', encoding='utf-8') as obj3_file:
-        new_content = obj3_file.read()
-    modified_object_3_page = new_content.replace(OBJ_1,object_list[0].upper())
-    modified_object_3_page = modified_object_3_page.replace(OBJ_3,object_list[2].upper())
-    with open(obj_3_page,'w', encoding='utf-8') as file:
-        file.write(modified_object_3_page)
+    modify_object_page(object_list[2], obj_3_page, OBJ_3, object_list[0])
         
     # Print complete messages
     print('UPDATED OBJECT HTMLS')
@@ -198,7 +230,8 @@ def update_obj_html():
     latitude =  float("{:.2f}".format(latitude))
     longitude = float(data['loc'].split(',')[1])
     longitude = float("{:.2f}".format(longitude))
-    location = [latitude, longitude]
+    
+    observer_location = [latitude, longitude]
 
     # TO UPDATE EACH OF THE OBJECT HTMLS WITH LOCATION INFORMATION #
     for i in range(len(object_list)):
@@ -209,7 +242,7 @@ def update_obj_html():
         DEC_ref = '[[[DEC-' + str(i+1) + ']]]'
         IMAGE_ref = '[[[IMAGE-' + str(i+1) + ']]]'
         
-        RA, DEC, IMAGE_path, in_sky = run_analysis(object_list[i],location)
+        RA, DEC, IMAGE_path, in_sky = run_analysis(object_list[i],observer_location)
 
         if in_sky == True:
             statement = "THIS OBJECT IS UP IN YOUR SKY!"
