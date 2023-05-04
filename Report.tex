@@ -62,7 +62,7 @@
 \begin{document}
   \thispagestyle{firstpagestyle}
   \begin{center}
-    {\huge \textbf{Project Phase II Draft 1}}
+    {\huge \textbf{Project Phase II}}
   \end{center}
 
     
@@ -95,18 +95,28 @@ astronomy. AI and automation have made this process more efficient by enabling a
 to quickly identify objects they are interested in, allowing them to focus their 
 attention and resources on the most promising objects.\\
 
+\subsection*{Program Structure}
+\begin{enumerate}
+  \item [$-$] COMPONENTS: All Python scripts
+  \item [$-$] DATA: All data files
+  \item [$-$] IMAGES: Where all images used for websites and images downloaded from STScI database are stored
+  \item [$-$] PAGES: All HTML files
+  \item [$-$] SCRIPTS: All javascript files
+  \item [$-$] STYLES: All CSS files
+  \item [$-$] UNIVERSAL: All common header and footer across all pages
+\end{enumerate}
+
 \subsection*{Data Collections and Methods}
 \begin{enumerate}[leftmargin=*]
-    \item Stage 1: Collect data from space news sites:  \texttt{website\_scraping.ipynb}:
+    \item Stage 1: Collect data from space news sites:  \texttt{website\_scraping.py}:
         \begin{enumerate}
-            \item [$-$] Use BeautifulSoup for website scraping
             \item [$-$] Websites: https://www.space.com/science-astronomy, \\
             https://www.sciencenews.org/topic/astronomy, \\ 
             https://www.nature.com/natastron/news-and-comment, \\ 
             https://phys.org/space-news/
-            \item [$-$] Get headlines and write to \texttt{headlines.txt}
+            \item [$-$] Write article headlines and links to \texttt{headlines.txt} and \texttt{links.txt}
         \end{enumerate}
-    \item Stage 2: Process keywords \texttt{keyword\_processing.ipynb}
+    \item Stage 2: Process keywords \texttt{keyword\_processing.py}
         \begin{enumerate}
             \item [$-$] Use nltk for language and POS tagging
             \item [$-$] Find most popular topics \texttt{popular\_topics()}:
@@ -115,13 +125,13 @@ attention and resources on the most promising objects.\\
                 \item[$\cdot$]Get nouns with nltk
                 \item[$\cdot$]Write nouns in a dictionary and track count in headlines.
                 \item[$\cdot$]Exclude generic words, websites, org names
-                \item[$\cdot$]Get top 10 words with highest counts
+                \item[$\cdot$]Get the top 10 words with the highest counts
                 \item[$\cdot$]Write these words in \texttt{popular\_topics.txt} and 
                   their occurrences
             \end{enumerate}
         \end{enumerate}
     \item Stage 3: Find object names from popular topics list:
-    \texttt{back\_search.ipynb}
+    \texttt{back\_search.py}
         \begin{enumerate}
             \item [$-$] Use genism for summaries and object locating
             \begin{enumerate}[leftmargin=*]
@@ -130,22 +140,20 @@ attention and resources on the most promising objects.\\
                 \item[$\cdot$] Create 40\% sized summaries of each article 
                 \item[$\cdot$] Filter through summaries with a large 
                   list of object names accumulated from multiple databases
-                \item[$\cdot$] Create list of final object names \texttt{data\final\_objects.txt}
+                 \item[$\cdot$] Create list of final object names \texttt{list\_objects.txt}
             \end{enumerate}
         \end{enumerate}
     \item Stage 4: Search top topics in databases to find more information 
-    about the objects, the coordinates and populate to html: \texttt{popular-object-to-html.py}:
+    about the objects, the coordinates, and populate to HTML: \texttt{popular-object-to-html.py}:
         \begin{enumerate}
             \item [$-$] Reverse search using keywords on websites
             \item [$-$] Get exact objects names
             \item [$-$] Get objects' coordinates from databases, can feed object 
               name to $https://archive.stsci.edu/cgi-bin/dss\_form$, use Astropy
-            \item [$-$] Determine if objects are observable, flag, and move to
-              the next object if not observable
+            \item [$-$] Determine if objects are observable, flag, and move to the next object if not observable
             \item [$-$] Use coordinates RA and Dec to get image 
               from $https://archive.stsci.edu/cgi-bin/dss\_form$
-            \item [$-$] Save brief information about objects, coordinates, images and 
-              related news/articles
+            \item [$-$] Save brief information about objects, coordinates and images and update information on HTML files
         \end{enumerate}
     \item Stage 5: Create a user interface (website) that:
     \begin{enumerate}
@@ -163,16 +171,7 @@ attention and resources on the most promising objects.\\
 
 Run \texttt{pip install -r requirements.txt} to install all the necessary packages.\\
 
-Structures:
-\begin{enumerate}
-  \item [$-$] COMPONENTS: All python scripts
-  \item [$-$] DATA: All data files
-  \item [$-$] IMAGES: Where all images used for websites and images downloaded from stsci database are stored
-  \item [$-$] PAGES: All html files
-  \item [$-$] SCRIPTS: All javascript files
-  \item [$-$] STYLES: All css files
-  \item [$-$] UNIVERSAL: All common header and footer across all pages
-\end{enumerate}
+
 This section will describe the steps of how to run the program. We  decided that 
 creating a \texttt{main.py} file that can be run each day and runs the files from 
 each of the sections described above would be the best option to make this program 
@@ -190,8 +189,9 @@ pages using the drop across the menu in the top right corner which gives the use
 to the About Us page, (\texttt{about-us.html}), the Final Paper page
  (\texttt{final-paper-page.html}) and References page (\texttt{ref-site-page.html}). \\
 
-Documentation can be found on each page using the little GitHub button in the left bottom 
-corner that brings the user straight to the public GitHub repository.
+Documentation can be found on each page using the little GitHub button in the left bottom corner that brings the user straight to the public GitHub repository. \\
+
+
 
 \subsection*{Project Goals}
 The goal of this project is to automate the process of retrieving popular stellar objects 

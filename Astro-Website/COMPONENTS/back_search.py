@@ -1,4 +1,5 @@
 import nltk
+import os
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 from bs4 import BeautifulSoup
@@ -8,10 +9,28 @@ import requests
 from collections.abc import Mapping
 from gensim import summarization
 
-
+POPULAR_TOPICS = 'Astro-Website/DATA/popular_topics.txt'
+LIST_OBJECTS = 'Astro-Website/DATA/list_objects.txt'
+HEADLINES = 'Astro-Website/DATA/headlines.txt'
+LINKS = 'Astro-Website/DATA/links.txt'
+NGC_OBJECTS = 'Astro-Website/DATA/NGC.xlsx'
+MESSIER_OBJECTS = 'Astro-Website/DATA/mesr-mas.xls'
+DAWRF_PLANETS = 'Astro-Website/DATA/dwarf_planets.txt'
+MARS_MOONS = 'Astro-Website/DATA/mars_moons.txt'
+JUPITER_MOONS = 'Astro-Website/DATA/jupiter_moons.txt'
+SATURN_MOONS = 'Astro-Website/DATA/saturn_moons.txt'
+URANUS_MOONS = 'Astro-Website/DATA/uranus_moons.txt'
+NEPTUNE_MOONS = 'Astro-Website/DATA/neptune_moons.txt'
+PLUTO_MOONS = 'Astro-Website/DATA/pluto_moons.txt'
+EXOPLANETS = 'Astro-Website/DATA/exoplanets.txt'
 
 # Reads headlines.txt file into list 
 def read_file(filename):
+    # Check if file exists
+    if not os.path.exists(filename):
+        # If not, create file
+        with open(filename, 'w') as f:
+            f.write('')
     with open(filename, 'r') as f:
         each_line = f.readlines()
         headlines = []
@@ -24,21 +43,28 @@ def read_file(filename):
                 headlines.append(line)
         return headlines
     
-# Reads populat_topics.txt file and returns list
+# Reads a file and returns list
 def read_file_word(filename):
+    # Check if file exists
+    if not os.path.exists(filename):
+        # If not, create file
+        with open(filename, 'w') as f:
+            f.write('')
     with open(filename, 'r') as f:
         each_line = f.read().split()
         return each_line
 
 # Read links file into list    
 def read_links(filename):
+    # Check if file exists
+    if not os.path.exists(filename):
+        # If not, create file
+        with open(filename, 'w') as f:
+            f.write('')
     with open(filename, 'r') as l:
         links = [line.strip() for line in l]
         return links
 
-words = read_file_word('Astro-Website/DATA/popular_topics.txt')
-headlines = read_file('Astro-Website/DATA/headlines.txt')
-links = read_links('Astro-Website/DATA/links.txt')
 
 # Returns nouns from string
 def return_noun(line):
@@ -75,10 +101,10 @@ def get_links(popular_headlines, headlines, links):
 
 def make_word_lists():
     # Read the NGC Excel file into a dataframe
-    df1 = pd.read_excel('Astro-Website/DATA/NGC.xlsx', sheet_name='NGC')
+    df1 = pd.read_excel(NGC_OBJECTS, sheet_name='NGC')
 
     # Read the Messier Excel file into a dataframe
-    df2 = pd.read_excel('Astro-Website/DATA/mesr-mas.xls', sheet_name='Messier Objects', skiprows = 8, nrows=110, usecols=range(2))
+    df2 = pd.read_excel(MESSIER_OBJECTS, sheet_name='Messier Objects', skiprows = 8, nrows=110, usecols=range(2))
 
     # Create lists for each Messier and NGC objects
     messier1 = df2.iloc[:,0].tolist()
@@ -91,45 +117,17 @@ def make_word_lists():
     # Convert to string plus catalog identifier
     messier = ['M' + str(element) for element in messier1]
     NGC = ['NGC ' + str(element).rstrip('.0') for element in NGC_str]
-    d_planets = ['Pluto', 'Ceres', 'Makemake', 'Haumea', 'Eris']
-    mars_moons = ['Deimos', 'Phobos']
-    named_jupiter_moons = ['Adrastea', 'Aitne', 'Amalthea', 'Ananke', 'Aoede', 'Arche', 'Autonoe', 'Callirrhoe', 'Callisto', 'Carme', 
-                    'Carpo', 'Chaldene', 'Cyllene', 'Dia', 'Eirene', 'Elara', 'Erinome', 'Ersa', 'Euanthe', 'Eukelade', 'Eupheme', 
-                    'Euporie', 'Europa', 'Eurydome', 'Ganymede', 'Harpalyke', 'Hegemone', 'Helike', 'Hermippe', 'Herse', 'Himalia', 
-                    'Io', 'Iocaste', 'Isonoe', 'Jupiter LI', 'Jupiter LII', 'Kale', 'Kallichore', 'Kalyke', 'Kore', 'Leda', 'Lysithea', 
-                    'Megaclite', 'Metis', 'Mneme', 'Orthosie', 'Pasiphae', 'Pasithee', 'Praxidike', 'Valetudo', 'Sinope', 'Sponde', 
-                    'Taygete', 'Thebe', 'Thelxinoe', 'Themisto', 'Thyone']
-    named_saturn_moons = ['Aegaeon', 'Aegir', 'Albiorix', 'Anthe', 'Atlas', 'Bebhionn', 'Bergelmir', 'Bestla', 'Calypso', 'Daphnis', 
-                    'Dione', 'Enceladus', 'Epimetheus', 'Erriapus', 'Farbauti', 'Fenrir', 'Fornjot', 'Greip', 'Hati', 'Helene', 
-                    'Hyperion', 'Hyrrokkin', 'Iapetus', 'Ijiraq', 'Janus', 'Jarnsaxa', 'Kari', 'Kiviuq', 'Loge', 'Methone', 
-                    'Mimas', 'Mundilfari', 'Narvi', 'Paaliaq', 'Pallene', 'Pan', 'Pandora', 'Phoebe', 'Polydeuces', 'Prometheus', 
-                    'Rhea', 'Siarnaq', 'Skathi', 'Skoll', 'Surtur', 'Suttungr', 'Tarqeq', 'Tarvos', 'Telesto', 'Tethys', 'Thrymyr', 
-                    'Titan', 'Ymir']
-    named_uranus_names = ['Ariel', 'Belinda', 'Bianca', 'Caliban', 'Cordelia', 'Cressida', 'Cupid', 'Desdemona', 'Ferdinand', 'Francisco', 
-                'Juliet', 'Mab', 'Margaret', 'Miranda', 'Oberon', 'Ophelia', 'Perdita', 'Portia', 'Prospero', 'Puck', 'Rosalind', 
-                'Setebos', 'Stephano', 'Sycorax', 'Titania', 'Trinculo', 'Umbriel']
-    named_neptune_moons = ['Despina', 'Galatea', 'Halimede', 'Hippocamp', 'Laomedeia', 'Larissa', 'Naiad', 'Nereid', 'Neso', 'Proteus', 
-                'Psamathe', 'Sao', 'Thalassa', 'Triton']
-    named_pluto_moons = ['Charon', 'Hydra', 'Kerberos', 'Nix', 'Styx']
-    exoplanet_names = ['Proxima Centauri b', 'TRAPPIST-1d', 'LHS 1140 b', 'Kepler-438b', 'Kepler-442b', 'Kepler-452b', 'Kepler-1229b', 
-                    'Kepler-62f', 'Kepler-186f', 'Kepler-452b', 'Kepler-1652b', 'Kepler-442b', 'Kepler-1638b', 'Kepler-438b', 'Kepler-1229b', 
-                    'Kepler-1649c', 'Kepler-62f', 'Kepler-186f', 'Kepler-69c', 'Kepler-1649c', 'Kepler-1652b', 'Kepler-1638b', 'Kepler-62e', 
-                    'Kepler-438b', 'Kepler-442b', 'Kepler-452b', 'Kepler-1229b', 'Kepler-442b', 'Kepler-1649c', 'Kepler-1638b', 'Kepler-438b', 
-                    'Kepler-1652b', 'Kepler-62f', 'Kepler-62e', 'Kepler-186f', 'Kepler-438b', 'Kepler-452b', 'Kepler-442b', 'Kepler-1649c', 
-                    'Kepler-62f', 'Kepler-1652b', 'Kepler-1638b', 'Kepler-438b', 'Kepler-62e', 'Kepler-1229b', 'Kepler-186f', 'Kepler-69c', 
-                    'Kepler-1649c', 'Kepler-438b', 'Kepler-442b', 'Kepler-1638b', 'Kepler-1652b', 'Kepler-62f', 'Kepler-62e', 'Kepler-186f', 
-                    'Kepler-1649c', 'Kepler-1229b', 'Kepler-438b', 'Kepler-69c', 'Kepler-442b', 'Kepler-1638b', 'Kepler-452b', 'Kepler-1652b', 
-                    'Kepler-62f', 'Kepler-62e', 'Kepler-186f', 'Kepler-1649c', 'Kepler-438b', 'Kepler-1229b', 'Kepler-1638b', 'Kepler-442b', 
-                    'Kepler-1652b', 'Kepler-452b', 'Kepler-1649c', 'Kepler-62f', 'Kepler-186f', 'Kepler-438b', 'Kepler-62e', 'Kepler-69c', 
-                    'Kepler-442b', 'Kepler-1229b', 'Kepler-1638b', 'Kepler-1652b', 'Kepler-62f', 'Kepler-1649c', 'Kepler-452b', 'Kepler-438b', 
-                    'Kepler-186f', 'Kepler-62e', 'Kepler-442b', 'Kepler-1638b', 'Kepler-1652b', 'Kepler-69c', 'Kepler-1649c', 'Kepler-62f', 
-                    'Kepler-438b', 'Kepler-1229b', 'Kepler-186f', 'Kepler-62e', 'Kepler-452b']
-    more_exoplanets =  [ 'Proxima Centauri b','TRAPPIST-1b','TRAPPIST-1c','TRAPPIST-1e','TRAPPIST-1f','TRAPPIST-1g','TRAPPIST-1h','Tau Cetie',
-                        'Tau Cetif','Ross 128b','LHS 1140b', 'Wolf 1061c','Wolf 1061d','Kepler-1649c','Gliese 667Cc','Gliese 667Cf','Gliese 667Ce',
-                        'HD-40307g','Gliese 163c','Gliese 832c','Gliese 667Cb']
+    d_planets = read_file_word(DAWRF_PLANETS)
+    mars_moons = read_file_word(MARS_MOONS)
+    jupiter_moons = read_file_word(JUPITER_MOONS)
+    saturn_moons = read_file_word(SATURN_MOONS)
+    uranus_moons = read_file_word(URANUS_MOONS)
+    neptune_moons = read_file_word(NEPTUNE_MOONS)
+    pluto_moons = read_file_word(PLUTO_MOONS)
+    exoplanets = read_file_word(EXOPLANETS)
 
     # Create one total list
-    total_list = messier+NGC+d_planets+mars_moons+named_uranus_names+named_jupiter_moons+named_neptune_moons+named_pluto_moons+named_saturn_moons+exoplanet_names+more_exoplanets
+    total_list = messier+NGC+d_planets+mars_moons+uranus_moons+jupiter_moons+neptune_moons+pluto_moons+saturn_moons+exoplanets
     return total_list
 
 
@@ -176,16 +174,18 @@ def object_list(total_list, summary_list):
 
 # Final function, runs full file
 def run_back_search():
+    words = read_file_word(POPULAR_TOPICS)
+    headlines = read_file(HEADLINES)
+    links = read_links(LINKS)
     popular_headlines = get_headlines(words, headlines)
     list_links = get_links(popular_headlines, headlines, links)
     total_list = make_word_lists()
     summary_list = summarize_artciles(list_links)
     object_ls = object_list(total_list, summary_list)
-    # Print to new file called 'popular topics'
-    with open('Astro-Website/DATA/list_objects.txt', 'w') as f:
+    # Get exact names of objects
+    with open(LIST_OBJECTS, 'w') as f:
         for items in reversed(object_ls):
             f.write(items+ '\n')
     f.close
-    print('Back search complete!')
     print('Check the file "list_objects.txt" for the results!')
 

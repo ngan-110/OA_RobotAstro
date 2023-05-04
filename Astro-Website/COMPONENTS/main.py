@@ -21,16 +21,16 @@ def main():
     print('RUNNING WEBSITE SCRAPPING...')
     website_scrapping.run_sites()
     
-    print('Running keyword processing...')
+    print('RUNNING KEYWORD PROCESSING...')
     keyword_processing.run_keywords()
     
-    print('Running back search...')
+    print('RUNNING BACK SEARCH...')
     back_search.run_back_search()
     
-    print('Populate objects and images to html...')
+    print('POPULATE OBJECTS TO HTML...')
     popular_objects_to_html.update_obj_html()
     
-    print('Populate headlines to html...')
+    print('POPULATE HEADLINES HTML...')
     headline_to_html.update_headline_html()
 
     

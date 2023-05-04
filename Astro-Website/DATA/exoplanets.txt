@@ -1,0 +1,119 @@
+Proxima Centauri b
+TRAPPIST-1b
+TRAPPIST-1c
+TRAPPIST-1d
+TRAPPIST-1e
+TRAPPIST-1f
+TRAPPIST-1g
+TRAPPIST-1h
+LHS 1140 b
+Kepler-438b
+Kepler-442b
+Kepler-452b
+Kepler-1229b
+Kepler-62f
+Kepler-186f
+Kepler-452b
+Kepler-1652b
+Kepler-442b
+Kepler-1638b
+Kepler-438b
+Kepler-1229b
+Kepler-1649c
+Kepler-62f
+Kepler-186f
+Kepler-69c
+Kepler-1649c
+Kepler-1652b
+Kepler-1638b
+Kepler-62e
+Kepler-438b
+Kepler-442b
+Kepler-452b
+Kepler-1229b
+Kepler-442b
+Kepler-1649c
+Kepler-1638b
+Kepler-438b
+Kepler-1652b
+Kepler-62f
+Kepler-62e
+Kepler-186f
+Kepler-438b
+Kepler-452b
+Kepler-442b
+Kepler-1649c
+Kepler-62f
+Kepler-1652b
+Kepler-1638b
+Kepler-438b
+Kepler-62e
+Kepler-1229b
+Kepler-186f
+Kepler-69c
+Kepler-1649c
+Kepler-438b
+Kepler-442b
+Kepler-1638b
+Kepler-1652b
+Kepler-62f
+Kepler-62e
+Kepler-186f
+Kepler-1649c
+Kepler-1229b
+Kepler-438b
+Kepler-69c
+Kepler-442b
+Kepler-1638b
+Kepler-452b
+Kepler-1652b
+Kepler-62f
+Kepler-62e
+Kepler-186f
+Kepler-1649c
+Kepler-438b
+Kepler-1229b
+Kepler-1638b
+Kepler-442b
+Kepler-1652b
+Kepler-452b
+Kepler-1649c
+Kepler-62f
+Kepler-186f
+Kepler-438b
+Kepler-62e
+Kepler-69c
+Kepler-442b
+Kepler-1229b
+Kepler-1638b
+Kepler-1652b
+Kepler-62f
+Kepler-1649c
+Kepler-452b
+Kepler-438b
+Kepler-186f
+Kepler-62e
+Kepler-442b
+Kepler-1638b
+Kepler-1652b
+Kepler-69c
+Kepler-1649c
+Kepler-62f
+Kepler-438b
+Kepler-1229b
+Kepler-186f
+Kepler-62e
+Kepler-452b
+Tau Cetie
+Tau Cetif
+Ross 128b
+LHS 1140b
+Wolf 1061c
+Wolf 1061d
+Gliese 667Cc
+Gliese 667Cf
+Gliese 667Ce
+HD-40307g
+Gliese 163c
+Gliese 832c
+Gliese 667Cb
