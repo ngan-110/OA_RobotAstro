@@ -9,6 +9,7 @@ import keyword_processing
 import back_search
 import popular_objects_to_html
 import headline_to_html
+import webbrowser
 
 
 # define the main function
@@ -32,7 +33,9 @@ def main():
     print('POPULATE HEADLINES HTML...')
     headline_to_html.update_headline_html()
 
-    
+    print('OPENING WEBSITE...')
+    website = 'Astro-Website\PAGES\object-1-page.html'
+    webbrowser.open_new_tab(website)
 
 if __name__ == '__main__':
     main()
