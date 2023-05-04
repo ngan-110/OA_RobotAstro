@@ -35,7 +35,7 @@ def main():
 
     print('OPENING WEBSITE...')
     directory = os.getcwd() 
-    abs_path = os.path.join(directory, 'PAGES', 'title-page.html')
+    abs_path = os.path.join(directory, 'Astro-Website\PAGES', 'title-page.html')
     print(abs_path)
     webbrowser.open(abs_path)
 
