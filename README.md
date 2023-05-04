@@ -19,11 +19,11 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#Program Structure">Installation</a></li>
+        <li><a href="#structure">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#Data Collections and Methods">Roadmap</a></li>
+    <li><a href="#methods">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -70,7 +70,7 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Program Structure:
+### Structure:
 1. COMPONENTS: All Python scripts
 2. DATA: All data files
 3. IMAGES: Where all images used for websites and images downloaded from STScI database are stored
@@ -91,7 +91,7 @@ _For more examples, please refer to the [Documentation](https://github.com/ngan-
 
 
 <!-- ROADMAP -->
-## Data Collections and Methods:
+## Methods:
 
 - [ ] Collect data from space news sites: [website_scrapping.py](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/COMPONENTS/website_scrapping.py):
     - Websites: https://www.space.com/science-astronomy, https://www.sciencenews.org/topic/astronomy, https://www.nature.com/natastron/news-and-comment, https://phys.org/space-news/
@@ -182,17 +182,4 @@ Project Link: [https://github.com/ngan-110/OA_RobotAstro](https://github.com/nga
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: Astro-Website/IMAGES/product-screenshot.PNG
