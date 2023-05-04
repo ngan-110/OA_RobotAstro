@@ -19,10 +19,11 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#Program Structure">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#Data Collections and Methods">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -40,11 +41,7 @@
 For our project, we have decided to build our own AI astronomer which determines the most searched objects in a given day and gets the coordinates of said objects through a DSS (Digitized Sky Survey) query. The project itself can be navigated through a simple and easily understandable 
 website.
 
-[Full Report](https://github.com/ngan-110/OA_RobotAstro/blob/main/Report.pdf)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -73,7 +70,6 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ### Program Structure:
 1. COMPONENTS: All Python scripts
 2. DATA: All data files
@@ -88,7 +84,7 @@ To get a local copy up and running follow these simple example steps.
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/ngan-110/OA_RobotAstro/blob/main/Report.pdf)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
