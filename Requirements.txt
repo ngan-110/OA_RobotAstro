@@ -1,15 +1,12 @@
-# These are the required packages you need to be able to run our project!
-pip install BeautifulSoup4
-pip install requests
-pip install gensim==3.6.0
-pip install nltk
-pip install os-sys
-pip install urllib
-pip install astropy
-pip install timezonefinder
-pip install pytz
-pip install selenium
-pip install pandas
-pip install webdriver_manager
-pip install openpyxl
-pip install xlrd
+beautifulsoup4
+requests
+gensim==3.6.0
+nltk
+astropy
+timezonefinder
+pytz
+selenium
+pandas
+webdriver_manager
+openpyxl
+xlrd

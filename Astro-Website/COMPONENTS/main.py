@@ -34,8 +34,9 @@ def main():
     headline_to_html.update_headline_html()
 
     print('OPENING WEBSITE...')
-    directory = os.path.normpath(os.getcwd() + os.sep + os.pardir)
+    directory = os.getcwd() 
     abs_path = os.path.join(directory, 'PAGES', 'title-page.html')
+    print(abs_path)
     webbrowser.open(abs_path)
 
 if __name__ == '__main__':
