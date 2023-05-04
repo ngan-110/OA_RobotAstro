@@ -66,36 +66,35 @@
   \end{center}
 
     
-\subsection*{Main project topic}
-The Robot Astronomer — We are building our own AI astronomer which determines the most 
-searched objects in a given day, gets the coordinates of said object, AND decides what 
-to observe beyond that. (The project will include an easily navigational and 
-understandable website that consists of all relevant information.)
+\subsection*{Main Project Topic: The Robot Astronomer}
+\quad For our project, we have decided to build our own AI astronomer which determines the most 
+searched objects in a given day and gets the coordinates of said objects through a DSS (Digitized 
+Sky Survey) query. The project itself can be navigated through a simple and easily understandable 
+website. \\
 
-\subsection*{Background}
-The field of astronomy has been revolutionized by advances in Artificial Intelligence 
-(AI) and automation. These technologies have greatly improved our ability to collect 
-and analyze vast amounts of astronomical data, enabling us to make significant 
-discoveries about the universe.\\
+\subsection*{Background:}
+\quad The application of Artificial Intelligence (AI) and automation in astronomy has brought 
+about revolutionary changes. The advancements in these technologies have led to significant 
+improvements in our ability to collect and analyze vast amounts of astronomical data, resulting 
+in significant discoveries about the universe. \\
 
-One of the primary applications of AI and automation in astronomy is the collection 
-of data. With the development of advanced telescopes and sensors, astronomers can now 
-capture vast amounts of data about the universe. However, processing and analyzing 
-this data manually can be a time-consuming and labor-intensive process. AI and automation 
-have therefore been used to streamline the data collection process, allowing astronomers 
-to gather more data in less time. In addition to collecting data, AI and automation have 
-also been used to identify and select objects of interest for further observation. 
-This is particularly important in astronomy, where there are billions of stars and 
-other celestial objects to observe. By using AI algorithms to analyze the data collected 
-by telescopes and sensors, astronomers can quickly identify objects that are most likely 
-to yield valuable scientific insights.\\
+\quad AI and automation have been primarily used in the collection of data in astronomy. With the 
+development of advanced telescopes, vast amounts of data can now be captured about the 
+universe. However, manual processing and analysis of this data can be time-consuming and 
+labor-intensive. AI and automation have made the data collection process more efficient, enabling 
+astronomers to gather more data in less time. Additionally, AI and automation have been used to 
+identify and select objects of interest for further observation. This is particularly crucial in 
+astronomy, where there are billions of stars and other celestial objects to observe. By using AI 
+algorithms to analyze the data collected by telescopes, astronomers can quickly identify 
+objects that are most likely to yield valuable scientific insights. \\
 
-Auto-selecting stellar objects to observe has become an important aspect of modern 
-astronomy. AI and automation have made this process more efficient by enabling astronomers 
-to quickly identify objects they are interested in, allowing them to focus their 
-attention and resources on the most promising objects.\\
+\quad Auto-selecting stellar objects to observe has become a vital aspect of modern astronomy. The 
+use of AI and automation has made this process more efficient by enabling astronomers to identify 
+the objects they are interested in quickly. This approach allows them to concentrate their attention 
+and resources on the most promising objects. Thus, the main objective of our project was to 
+determine the most searched objects that general astronomy websites were discussing.  \\
 
-\subsection*{Program Structure}
+\subsection*{Program Structure:}
 \begin{enumerate}
   \item [$-$] COMPONENTS: All Python scripts
   \item [$-$] DATA: All data files
@@ -106,7 +105,7 @@ attention and resources on the most promising objects.\\
   \item [$-$] UNIVERSAL: All common header and footer across all pages
 \end{enumerate}
 
-\subsection*{Data Collections and Methods}
+\subsection*{Data Collections and Methods:}
 \begin{enumerate}[leftmargin=*]
     \item Stage 1: Collect data from space news sites:  \texttt{website\_scraping.py}:
         \begin{enumerate}
@@ -167,12 +166,14 @@ attention and resources on the most promising objects.\\
     \end{enumerate}
 \end{enumerate}
 
-\subsection*{How the Program Runs}
+\subsection*{How the Program Runs:}
 
+\begin{center} 
 Run \texttt{pip install -r requirements.txt} to install all the necessary packages.\\
+\end{center}
 
 
-This section will describe the steps of how to run the program. We  decided that 
+\quad This section will describe the steps of how to run the program. We  decided that 
 creating a \texttt{main.py} file that can be run each day and runs the files from 
 each of the sections described above would be the best option to make this program 
 as user-friendly as possible. This file calls functions from each back-end file, 
@@ -181,7 +182,7 @@ arguments needed for the command line option but the goal is that our website wi
 the day's popular images would automatically open in the user's browser where they 
 roam around on the interface.\\
 
-The user interface starts with the title page (\texttt{title-page.html}) which, when 
+\quad The user interface starts with the title page (\texttt{title-page.html}) which, when 
 clicked, transitions into the homepage or most popular object page,
 \texttt{object-1-page.html}. Here the user can choose to click between the three most 
 popular objects of the day using the center buttons or surf through our information 
@@ -189,41 +190,66 @@ pages using the drop across the menu in the top right corner which gives the use
 to the About Us page, (\texttt{about-us.html}), the Final Paper page
  (\texttt{final-paper-page.html}) and References page (\texttt{ref-site-page.html}). \\
 
-Documentation can be found on each page using the little GitHub button in the left bottom corner that brings the user straight to the public GitHub repository. \\
+\quad Documentation can be found on each page using the little GitHub button in the left 
+bottom corner of our website that brings the user straight to the public GitHub repository. \\
 
 
 
-\subsection*{Project Goals}
-The goal of this project is to automate the process of retrieving popular stellar objects 
+\subsection*{The User Interface:}
+\quad The user interface (website) of our project was designed to be easy to navigate 
+and informative. It features seven pages, including a title page, three pages for each 
+of the most-searched objects, an 'About Us' page, a page that contains this final paper, 
+and a references page. Except for the title page, the website has a hamburger menu on 
+every page, which makes it easy to navigate to any page from anywhere on the website. 
+There is also a link to our Github repository on every page aside from the title page, 
+which contains more technical details about our program. \\
+
+\quad When a user first lands on the title page, the program automatically takes them to 
+the first most-searched object page upon clicking anywhere on the screen. The first object 
+page displays the user's local time, their longitude and latitude, and information about 
+whether or not the object is currently visible in their sky, calculated using astropy. This 
+is followed by the name of the object, an easily navigable button table that can bring the 
+user to each other object page, the name of the object again, its Right Ascension and Declination, 
+and an image of it. The same format is repeated for the other two object pages, featuring 
+respective information. \\
+
+\quad The reference page is continually updated with a list of all the online articles that 
+were read and searched through to inform the AI Astronomer's decision about what the 'most-searched' 
+objects of any given day were. This page provides users with a comprehensive list of resources 
+used to develop our project, allowing them to explore further on their own. \\
+
+
+\subsection*{Project Goals:}
+\quad The goal of this project is to automate the process of retrieving popular stellar objects 
 from space news websites, analyzing them, and quickly determining the most popular ones to 
 observe. We argue that because the popular objects in question are popular amongst
 verifiable space news sources, they themselves are promising sources astronomically. 
 The project aims to achieve this goal by utilizing advanced techniques in AI and 
 automation.\\
 
-The first objective of the project is to develop a web scraping tool that can 
+\quad The first objective of the project is to develop a web scraping tool that can 
 crawl popular space news websites and retrieve articles related to stellar objects. 
 The tool will then use natural language processing techniques to identify and extract 
 the names of the stellar objects mentioned in the articles.\\
 
-The second objective is to analyze the data collected by the web scraping tool 
+\quad The second objective is to analyze the data collected by the web scraping tool 
 to determine the most popular stellar objects among the articles retrieved. This 
 will be achieved by using natural language processing to tag keywords mentioned 
 in headlines to process the data and identify most mentioned objects in the articles.\\
 
-The third objective is to search for the popular stellar objects identified in 
+\quad The third objective is to search for the popular stellar objects identified in 
 the second objective within the Space Telescope Science Institute (STScI) database 
 using regular expression names. The tool will retrieve the  International 
 Celestial Reference System (ICRS) coordinates of the objects, their images, 
 and related articles/research papers from the STScI database.\\
 
-The final objective is to present the data retrieved in a user-friendly interface 
+\quad The final objective is to present the data retrieved in a user-friendly interface 
 that allows astronomers to quickly identify the most popular and promising stellar 
 objects to observe. The interface will provide users with a dashboard that displays 
 the ICRS coordinates, images, and related articles/research papers of the popular 
 stellar objects.\\
 
-Overall, the project aims to streamline the process of identifying and observing 
+\quad Overall, the project aims to streamline the process of identifying and observing 
 popular stellar objects by automating the data retrieval and analysis process. 
 By achieving these objectives, the project will enable astronomers to make more 
 efficient use of their time and resources, and increase the likelihood of making 
