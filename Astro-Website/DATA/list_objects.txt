@@ -11,5 +11,4 @@ Europa
 Callisto
 Phobos
 Pluto
-NGC 346
 M87
