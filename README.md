@@ -40,9 +40,7 @@
 For our project, we have decided to build our own AI astronomer which determines the most searched objects in a given day and gets the coordinates of said objects through a DSS (Digitized Sky Survey) query. The project itself can be navigated through a simple and easily understandable 
 website.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+[Full Report](https://github.com/ngan-110/OA_RobotAstro/blob/main/Report.pdf)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,34 +97,34 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Data Collections and Methods:
 
-- [ ] Collect data from space news sites:  \texttt{website\_scraping.py}:
+- [ ] Collect data from space news sites: [website_scrapping.py](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/COMPONENTS/website_scrapping.py):
     - Websites: https://www.space.com/science-astronomy, https://www.sciencenews.org/topic/astronomy, https://www.nature.com/natastron/news-and-comment, https://phys.org/space-news/
-    - Write article headlines and links to \texttt{headlines.txt} and \texttt{links.txt}
-- [ ] Process keywords \texttt{keyword\_processing.py}
+    - Write article headlines and links to [headlines.txt](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/DATA/headlines.txt) and [links.txt](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/DATA/links.txt) 
+- [ ] Process keywords [keyword_processing.py](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/COMPONENTS/keyword_processing.py)
     - Use nltk for language and POS tagging
-    - Find most popular topics \texttt{popular\_topics()}:
-        - Read \texttt{headlines.txt}
+    - Find most popular topics:
+        - Read [headlines.txt](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/DATA/links.txt)
         - Get nouns with nltk
         - Write nouns in a dictionary and track count in headlines.
         - Exclude generic words, websites, org names
         - Get the top 10 words with the highest counts
-        - Write these words in \texttt{popular\_topics.txt} and their occurrences
+        - Write these words in [popular_topics.txt](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/DATA/popular_topics.txt) and their occurrences
 - [ ] Find object names from popular topics list:
-    \texttt{back\_search.py}
+    [back_search.py](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/COMPONENTS/back_search.py)
     - Use genism for summaries and object locating
         - Search all headlines for top words
         - Scrape articles from their corresponding links
         - Create 40\% sized summaries of each article 
         - Filter through summaries with a large list of object names accumulated from multiple databases
-        - Create list of final object names \texttt{list\_objects.txt}
+        - Create list of final object names [list_objects.txt](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/DATA/list_objects.txt)
 - [ ] Search top topics in databases to find more information 
-    about the objects, the coordinates, and populate to HTML: \texttt{popular-object-to-html.py}:
+    about the objects, the coordinates, and populate to HTML: [popular_object_to_html.py](https://github.com/ngan-110/OA_RobotAstro/blob/main/Astro-Website/COMPONENTS/popular_object_to_html.py):
     - Reverse search using keywords on websites
     - Get exact objects names
-    - Get objects' coordinates from databases, can feed object name to $https://archive.stsci.edu/cgi-bin/dss\_form$, use Astropy
+    - Get objects' coordinates from databases, can feed object name to https://archive.stsci.edu/cgi-bin/dss_form, use Astropy
     - Determine if objects are observable, flag, and move to the next object if not observable
     - Use coordinates RA and Dec to get image 
-              from $https://archive.stsci.edu/cgi-bin/dss\_form$
+              from https://archive.stsci.edu/cgi-bin/dss_form
     - Save information about objects: coordinates and images and update on HTML files
 - [ ] Create a user interface (website) that:
     - Displays images of the most-searched objects (catalog and originally taken), general information about each object (ie. each's location in the sky)
