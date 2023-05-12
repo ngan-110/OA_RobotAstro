@@ -20,6 +20,7 @@
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[letterpaper,voffset=-.5in,bmargin=3cm,footskip=1cm]{geometry}
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
 \usepackage[colorlinks = true]{hyperref} 
 \setlength{\parindent}{0.0in}
 \setlength{\parskip}{0.1in}
@@ -58,7 +59,7 @@
 
 \pagestyle{fancyplain}
 \usepackage{tikz}
-
+\addbibresource{ref.bib}
 \begin{document}
   \thispagestyle{firstpagestyle}
   \begin{center}
@@ -80,13 +81,13 @@ in significant discoveries about the universe. \\
 development of advanced telescopes, vast amounts of data can now be captured about the 
 universe. However, manual processing and analysis of this data can be time-consuming and 
 labor-intensive. AI and automation have made the data collection process more efficient, enabling 
-astronomers to gather more data in less time. Additionally, AI and automation have been used to 
+astronomers to gather more data in less time \cite{Spindler}. Additionally, AI and automation have been used to 
 identify and select objects of interest for further observation. This is particularly crucial in 
 astronomy, where there are billions of stars and other celestial objects to observe. By using AI 
 algorithms to analyze the data collected by telescopes, astronomers can quickly identify 
 objects that are most likely to yield valuable scientific insights. \\
 
-\quad Auto-selecting stellar objects to observe has become a vital aspect of modern astronomy. The 
+\quad Being able to automate the process of selecting stellar objects to observe has become more desirable \cite{Ananthaswamy}. The 
 use of AI and automation has made this process more efficient by enabling astronomers to identify 
 the objects they are interested in quickly. This approach allows them to concentrate their attention 
 and resources on the most promising objects. Thus, the main objective of our project was to 
@@ -134,7 +135,7 @@ determine the most searched objects that general astronomy websites were discuss
             \begin{enumerate}[leftmargin=*]
                 \item[$\cdot$] Search all headlines for top words
                 \item[$\cdot$] Scrape articles from their corresponding links
-                \item[$\cdot$] Create 40\% sized summaries of each article 
+                \item[$\cdot$] Create 40\% sized summaries of each article to ease the process of scanning for specific objects to observe. 
                 \item[$\cdot$] Filter through summaries with a large 
                   list of object names accumulated from multiple databases
                  \item[$\cdot$] Create list of final object names \texttt{list\_objects.txt}
@@ -154,7 +155,7 @@ determine the most searched objects that general astronomy websites were discuss
         \end{enumerate}
     \item Stage 5: Create a user interface (website) that:
     \begin{enumerate}
-        \item [$-$] Displays images of the most-searched objects (catalog and originally taken),
+        \item [$-$] Displays images of the 3 objects that are mentioned the most frequently on the news within the day (catalog and originally taken),
         general information about each object (ie. each's location in the sky)
         \item [$-$] Includes a link to GitHub documentation
         \item [$-$] Includes an 'About Us' page, a page about the history of the stellarium telescope, 
@@ -207,7 +208,31 @@ respective information. \\
 \quad The reference page is continually updated with a list of all the online articles that 
 were read and searched through to inform the AI Astronomer's decision about what the 'most-searched' 
 objects of any given day were. This page provides users with a comprehensive list of resources 
-used to develop our project, allowing them to explore further on their own. \\
+used to develop our project, allowing them to explore further on their own. Figure 1,2,3,4 show samples of the interface.\\
+
+\begin{figure}[h]
+\caption{The interface after main.py finishes running, shows the main page}
+\centering
+\includegraphics[width=0.9\textwidth]{mainpage.jpg}
+\end{figure}
+\begin{figure}[h]
+\caption{The interface when user clicks anywhere on the main page}
+\centering
+\includegraphics[width=0.9\textwidth]{page1.jpg}
+\end{figure}
+\begin{figure}[h]
+\caption{The interface when user clicks the second button on the left-hand side, prompting 2nd most popular object}
+\centering
+\includegraphics[width=0.9\textwidth]{page2.jpg}
+\end{figure}
+\begin{figure}[h]
+\caption{The interface when user clicks the third button on the left-hand side, prompting 3rd most popular object}
+\centering
+\includegraphics[width=0.9\textwidth]{page3.jpg}
+\end{figure}
+\\
+
+\\
 
 \subsection*{Project Goals:}
 \quad The goal of this project is to automate the process of retrieving popular stellar objects 
@@ -242,8 +267,11 @@ stellar objects.\\
 \quad Overall, the project aims to streamline the process of identifying and observing 
 popular stellar objects by automating the data retrieval and analysis process. 
 By achieving these objectives, the project will enable astronomers to make more 
-efficient use of their time and resources, and increase the likelihood of making 
+efficient use of their time and resources and increase the likelihood of making 
 groundbreaking discoveries in the field of astronomy.\\
+
+\medskip
+\printbibliography
 
 \end{document}
 
