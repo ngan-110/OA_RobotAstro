@@ -21,13 +21,13 @@ from selenium.webdriver.common.keys import Keys
 
 
 # Define constants
-LIST_OBJECTS = 'Astro-Website/DATA/list_objects.txt'
-obj_1_template = 'Astro-Website/PAGES/TEMPLATES/object-1-page.html'
-obj_2_template = 'Astro-Website/PAGES/TEMPLATES/object-2-page.html'
-obj_3_template = 'Astro-Website/PAGES/TEMPLATES/object-3-page.html'
-obj_1_page = 'Astro-Website/PAGES/object-1-page.html'
-obj_2_page = 'Astro-Website/PAGES/object-2-page.html'
-obj_3_page = 'Astro-Website/PAGES/object-3-page.html'
+LIST_OBJECTS = 'Astro-Website\DATA\list_objects.txt'
+obj_1_template = 'Astro-Website\PAGES\TEMPLATES\object-1-page.html'
+obj_2_template = 'Astro-Website\PAGES\TEMPLATES\object-2-page.html'
+obj_3_template = 'Astro-Website\PAGES\TEMPLATES\object-3-page.html'
+obj_1_page = 'Astro-Website\PAGES\object-1-page.html'
+obj_2_page = 'Astro-Website\PAGES\object-2-page.html'
+obj_3_page = 'Astro-Website\PAGES\object-3-page.html'
 OBJ_1 = "[[[OBJECT-1]]]"
 OBJ_2 = "[[[OBJECT-2]]]"
 OBJ_3 = "[[[OBJECT-3]]]"
@@ -126,8 +126,9 @@ def run_analysis(object, observer_location):
     DE = "+{}d {}m {:.2f}s".format(de_degrees, de_minutes, de_seconds)
 
     # If object is in Solar system, use predownloaded images of solar system bodies
-    if object in SolarSystemBodies:
-        dest_path = os.path.join('Astro-Website/IMAGES', object + '.jpg')
+    if object.lower() in SolarSystemBodies:
+        object = object.lower()
+        dest_path = os.path.join('../IMAGES', object + '.jpg')
     # If object is not in Solar system, download image from sky survey
     else:  
         # Automating locate elements for data retrieving
@@ -206,9 +207,9 @@ def update_obj_html():
     if os.path.exists(obj_3_page):
         os.remove(obj_3_page)
     # Copy the template to the object page
-    os.system('cp ' + obj_1_template + ' ' + obj_1_page)
-    os.system('cp ' + obj_2_template + ' ' + obj_2_page)  
-    os.system('cp ' + obj_3_template + ' ' + obj_3_page)
+    os.system('copy ' + obj_1_template + ' ' + obj_1_page)
+    os.system('copy ' + obj_2_template + ' ' + obj_2_page)  
+    os.system('copy ' + obj_3_template + ' ' + obj_3_page)
     # Generate the object list
     object_list = generate_obj_list(LIST_OBJECTS)
     # TODO: Rewrite into functions

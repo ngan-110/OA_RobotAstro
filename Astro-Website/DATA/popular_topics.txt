@@ -1,10 +1,10 @@
-planet
 star
-moon
-gas
-life
 hole
 radio
-return
-mission
-universe
+years
+mars
+atmosphere
+galaxy
+stars
+rings
+life
