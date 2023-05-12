@@ -21,13 +21,13 @@ from selenium.webdriver.common.keys import Keys
 
 
 # Define constants
-LIST_OBJECTS = 'Astro-Website/DATA/list_objects.txt'
-obj_1_template = 'Astro-Website/PAGES/TEMPLATES/object-1-page.html'
-obj_2_template = 'Astro-Website/PAGES/TEMPLATES/object-2-page.html'
-obj_3_template = 'Astro-Website/PAGES/TEMPLATES/object-3-page.html'
-obj_1_page = 'Astro-Website/PAGES/object-1-page.html'
-obj_2_page = 'Astro-Website/PAGES/object-2-page.html'
-obj_3_page = 'Astro-Website/PAGES/object-3-page.html'
+LIST_OBJECTS = 'Astro-Website\DATA\list_objects.txt'
+obj_1_template = 'Astro-Website\PAGES\TEMPLATES\object-1-page.html'
+obj_2_template = 'Astro-Website\PAGES\TEMPLATES\object-2-page.html'
+obj_3_template = 'Astro-Website\PAGES\TEMPLATES\object-3-page.html'
+obj_1_page = 'Astro-Website\PAGES\object-1-page.html'
+obj_2_page = 'Astro-Website\PAGES\object-2-page.html'
+obj_3_page = 'Astro-Website\PAGES\object-3-page.html'
 OBJ_1 = "[[[OBJECT-1]]]"
 OBJ_2 = "[[[OBJECT-2]]]"
 OBJ_3 = "[[[OBJECT-3]]]"
