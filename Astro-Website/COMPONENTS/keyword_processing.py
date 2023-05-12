@@ -1,12 +1,15 @@
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 import operator
 import nltk
+nltk.download() 
 
 POPULAR_TOPICS = 'Astro-Website/DATA/popular_topics.txt'
 HEADLINES = 'Astro-Website/DATA/headlines.txt'
 # List of common generic keywords and organization names
 generic_keywords = ['A', 'world', 'scientist', 'scientists', 'sky', 'space', 'science', 'bookshelf', 'nature', 'ideas', 'doesn', 't', 'bodies', 'telescope', 'today']
 names = ['fish','turing','james', 'webb', 's', '’', 'time', 'day', 'earth','astronomers','reveals', 'thanks', 'secrets', 'call' ]
-org_names = ['NASA', 'nasa']
+org_names = ['NASA', 'nasa', 'ESA', 'esa']
 
 # Read string from text file and returns all nouns from file
 def read_file(filename):
