@@ -34,8 +34,10 @@ def main():
     headline_to_html.update_headline_html()
 
     print('OPENING WEBSITE...')
-    website = 'Astro-Website\PAGES\object-1-page.html'
-    webbrowser.open_new_tab(website)
+    directory = os.getcwd() 
+    abs_path = os.path.join(directory, 'Astro-Website\PAGES', 'title-page.html')
+    print(abs_path)
+    webbrowser.open(abs_path)
 
 if __name__ == '__main__':
     main()

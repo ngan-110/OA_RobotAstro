@@ -60,6 +60,7 @@ https://www.nature.com/articles/s41550-023-01905-1
 https://www.nature.com/articles/s41550-023-01908-y
 https://www.nature.com/articles/s41550-023-01909-x
 https://www.nature.com/articles/s41550-023-01907-z
+<<<<<<< HEAD
 https://phys.org/news/2023-05-definitive-age-saturn-theyre-young.html
 https://phys.org/news/2023-05-advanced-life-peaked-billions-years.html
 https://phys.org/news/2023-05-dark-atoms-theoretical-astrophysicists.html
@@ -80,3 +81,25 @@ https://phys.org/news/2023-05-images-nasa-perseverance-wild-martian.html
 https://phys.org/news/2023-05-eso-telescope-reveals-hidden-views.html
 https://phys.org/news/2023-05-strange-solitary-life-young-stars.html
 https://phys.org/news/2023-05-evidence-supermassive-stars-globular-clusters.html
+=======
+https://phys.org/news/2023-05-astronomers-witness-star-devouring-planet.html
+https://phys.org/news/2023-05-j00492525-massive-pulsating-white-dwarf.html
+https://phys.org/news/2023-05-pressure-required-mars-space-thought.html
+https://phys.org/news/2023-05-x-ray-telescope-dark-energy-uniformly.html
+https://phys.org/news/2023-05-ultra-fast-space-evolution-galaxies.html
+https://phys.org/news/2023-05-astronomers-distant-gas-clouds-leftovers.html
+https://phys.org/news/2023-05-european-company-space-station-artificial.html
+https://phys.org/news/2023-05-life-blocks-degrees-celsius.html
+https://phys.org/news/2023-05-homework-prep-eclipses.html
+https://phys.org/news/2023-05-ai-astronomers-discoveries-universe-faster.html
+https://phys.org/news/2023-05-dark-energy-camera-captures-documented.html
+https://phys.org/news/2023-05-advanced-aliens-life-earth-scientists.html
+https://phys.org/news/2023-05-radio-relic-odd-circle-meerkat.html
+https://phys.org/news/2023-05-stormy-sun-kickstarted-life-earth.html
+https://phys.org/news/2023-05-nasa-animation-sizes-universe-biggest.html
+https://phys.org/news/2023-05-video-series-captures-team-nasa.html
+https://phys.org/news/2023-05-permanently-shadowed-craters-moon.html
+https://phys.org/news/2023-05-mars-samples-future-earth.html
+https://phys.org/news/2023-05-hubble-lenticular-galaxy-ngc.html
+https://phys.org/news/2023-05-nasa-s-mode-mission-ocean-surface.html
+>>>>>>> f0091933e3ecefe85a630db2d53dfc588c4dadc5
