@@ -1,16 +1,5 @@
 TRAPPIST-1b
 Atlas
-Styx
-Nix
-Kerberos
-Hydra
-Charon
 Jupiter
-Io
-Ganymede
-Europa
-Callisto
-Phobos
 Pluto
-NGC 346
 M87

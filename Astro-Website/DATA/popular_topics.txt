@@ -1,0 +1,10 @@
+planet
+star
+moon
+gas
+life
+hole
+radio
+return
+mission
+universe

@@ -126,8 +126,9 @@ def run_analysis(object, observer_location):
     DE = "+{}d {}m {:.2f}s".format(de_degrees, de_minutes, de_seconds)
 
     # If object is in Solar system, use predownloaded images of solar system bodies
-    if object in SolarSystemBodies:
-        dest_path = os.path.join('Astro-Website/IMAGES', object + '.jpg')
+    if object.lower() in SolarSystemBodies:
+        object = object.lower()
+        dest_path = os.path.join('../IMAGES', object + '.jpg')
     # If object is not in Solar system, download image from sky survey
     else:  
         # Automating locate elements for data retrieving
