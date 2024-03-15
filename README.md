@@ -162,7 +162,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-[Ngan Bao](https://www.linkedin.com/in/ngan-tkb-nguyen/) - [Alexandra Savino](https://www.linkedin.com/in/alexandra-savino-879146200/) - [Rhessa Weber Langstaff](https://www.linkedin.com/in/rhessa-weber-langstaff/)
+[Ngan Nguyen](https://www.linkedin.com/in/ngan-tkb-nguyen/) - [Alexandra Savino](https://www.linkedin.com/in/alexandra-savino-879146200/) - [Rhessa Weber Langstaff](https://www.linkedin.com/in/rhessa-weber-langstaff/)
 
 
 Project Link: [https://github.com/ngan-110/OA_RobotAstro](https://github.com/ngan-110/OA_RobotAstro)
